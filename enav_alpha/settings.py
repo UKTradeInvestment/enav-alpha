@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -76,16 +77,8 @@ WSGI_APPLICATION = 'enav_alpha.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'enav',
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PWD'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT'),
-        }
+    'default': dj_database_url.config()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
