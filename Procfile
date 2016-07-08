@@ -1,0 +1,1 @@
+web: gunicorn enav_alpha.wsgi
