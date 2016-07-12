@@ -55,3 +55,12 @@ Or through heroku:
     heroku local
 ```
 Then visit [localhost:5000](http://localhost:5000)
+
+## Running tests
+
+Tests include a pep8 style check, django test script and coverage report.
+
+```shell
+    workon enav-alpha
+    ./scripts/run_tests.sh
+```
