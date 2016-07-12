@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export DATABASE_URL=''
+export DATABASE_URL='postgres://@localhost/enav'
