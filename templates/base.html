@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}E Navigator{% endblock title %}</title>
+    {% block head_meta %}
+      <meta name="description" content="{% block head_meta_description %}E Navigator{% endblock head_meta_description %}">
+      {% block head_meta_charset %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8">
+      {% endblock head_meta_charset %}
+      {% block head_meta_viewport %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    {% block canonical %}
+      <link rel="canonical" href="">
+    {% endblock canonical %}
+    {% block head_favicon %}
+      <link rel="icon" type="image/png" href="{{ STATIC_URL }}favicon.ico">
+    {% endblock head_favicon %}
+    {% block head_css %}
+      <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="screen">
+    {% endblock head_css %}
+  </head>
+  <body>
+    <header role="banner">
+      {% block header %}
+        <nav role="navigation">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      {% endblock header %}
+    </header>
+    <main role="main">
+      {% block content %}{% endblock content %}
+    </main>
+    <footer role="contentinfo">
+      {% block footer %}
+        <p>footer</p>
+      {% endblock footer %}
+    </footer>
+    {% block footer_javascript %}
+      <script src="{{ STATIC_URL }}js/app.js"></script>
+    {% endblock footer_javascript %}
+  </body>
+</html>
