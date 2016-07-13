@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,10 +17,10 @@
       <link rel="canonical" href="">
     {% endblock canonical %}
     {% block head_favicon %}
-      <link rel="icon" type="image/png" href="{{ STATIC_URL }}favicon.ico">
+      <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
     {% endblock head_favicon %}
     {% block head_css %}
-      <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="screen">
+      <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
     {% endblock head_css %}
   </head>
   <body>
@@ -42,7 +43,7 @@
       {% endblock footer %}
     </footer>
     {% block footer_javascript %}
-      <script src="{{ STATIC_URL }}js/app.js"></script>
+      <script src="{% static "javascripts/all.js" %}"></script>
     {% endblock footer_javascript %}
   </body>
 </html>

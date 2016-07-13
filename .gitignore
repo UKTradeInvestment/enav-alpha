@@ -89,3 +89,6 @@ ENV/
 .ropeproject
 
 environment.sh
+
+# nodes #
+node_modules/
