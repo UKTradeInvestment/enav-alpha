@@ -12,6 +12,21 @@ Languages/applications needed
 - Python 3.5
 - Postgres [postgres](https://www.postgresql.org)
 - Heroku Toolbelt [heroku](https://toolbelt.heroku.com)
+- [Node](https://nodejs.org/en/) 5.0.0 or greater
+
+```shell
+    brew install node
+```
+
+[NPM](npmjs.org) is Node's package management tool. `n` is a tool for managing
+different versions of Node. The following installs `n` and uses the latest
+version of Node.
+
+```shell
+    npm install -g n
+    n latest
+    npm rebuild node-sass
+```
 
 The app runs within a virtual environment. To [install virtualenv](https://virtualenv.readthedocs.org/en/latest/installation.html), run
 ```shell
@@ -55,6 +70,14 @@ Or through heroku:
     heroku local
 ```
 Then visit [localhost:5000](http://localhost:5000)
+
+## Rebuilding the frontend assets
+
+If you want the front end assets to re-compile on changes, leave this running
+in a separate terminal from the app
+```shell
+    npm run watch
+```
 
 ## Running tests
 
