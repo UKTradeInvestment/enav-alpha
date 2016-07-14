@@ -2,7 +2,7 @@ from django.views import generic
 from django.shortcuts import render
 
 from .models import Market
-from .forms import MarketFilterForm
+from .forms import MarketFilterForm, HomepageForm
 
 
 class MarketListView(generic.ListView):
@@ -26,3 +26,12 @@ class MarketListView(generic.ListView):
 class MarketDetailView(generic.DetailView):
     model = Market
     template_name = 'markets/detail.html'
+
+
+class HomepageView(generic.TemplateView):
+    template_name = 'markets/index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['form'] = HomepageForm(self.request.GET)
+        return context
