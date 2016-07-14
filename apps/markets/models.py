@@ -7,113 +7,91 @@ import datetime
 from django.utils import timezone
 
 
-PLATFORM_TYPE_CHOICES = (
-    ('0', 'B2B'),
-    ('1', 'B2C'),
+# SAMPLE DATA
+PRODUCT_CATEGORIES = (
+    ('0', 'Menswear'),
+    ('1', 'Womenswear')
+)
+
+# SAMPLE DATA
+PLATFORM_BRAND_POSITION = (
+    ('0', 'Luxury'),
+    ('1', 'mid'),
+    ('2', 'discount')
+)
+
+# SAMPLE DATA
+# Pulled from https://en.wikipedia.org/wiki/ISO_639
+LISTING_LANGUAGES = (
+    ('0', 'English (eng)'),
+    ('1', 'Spanish (spa)'),
+    ('2', 'Chinese', ('cdo'))
 )
 
 
 class Market(models.Model):
-    # Country (Should this be an enum?)
-    country = models.CharField(max_length=200, blank=True)
-    # Website
-    website = models.URLField(blank=True)
-    # Company name
-    company_name = models.CharField(max_length=200, blank=True)
-    # Parent company
-    parent_company_name = models.CharField(max_length=200, blank=True)
-    # Product categories
-    # TODO
-    # Details of goods sold
-    goods_sold = models.TextField(blank=True)
-    # Brand domestic
-    brand_domestic = models.NullBooleanField()
-    # Brand international
-    brand_international = models.NullBooleanField()
-    # Brand own
-    brand_own = models.NullBooleanField()
-    # Volume of business(Turnover)
-    volume_turnover = models.BigIntegerField(null=True)
-    # Date of "Volume of business"
-    volume_turnover_date = models.DateField(null=True)
-    # Currency conversion rate
-    turnover_currency_rate = models.DecimalField(max_digits=20, decimal_places=5, null=True)
-    # Turnover GBP
-    volume_turnover_gbp = models.BigIntegerField(null=True)
-    # Date of conversion
-    turnover_conversion_date = models.DateField(null=True)
-    # Platform
-    platform = models.CharField(max_length=1, choices=PLATFORM_TYPE_CHOICES, blank=True)
-    # Date Established
-    date_established = models.DateField(null=True)
-    # Contact details
-    # Contact name
-    contact_name = models.CharField(max_length=200, blank=True)
-    # Contact position
-    contact_position = models.CharField(max_length=200, blank=True)
-    # Contact email
-    contact_email = models.EmailField(blank=True)
-    # Contact phone
-    contact_phone = models.CharField(max_length=200, blank=True)
-    # Contact address
-    contact_address = models.TextField(blank=True)
-    # Contact other
-    contact_other = models.TextField(blank=True)
-    # Strategy and recent investments
-    strategy_recent_investments = models.TextField(blank=True)
-    # Comments and notes
-    comments_notes = models.TextField(blank=True)
-    # Sources
-    sources = models.TextField(blank=True)
-    # Seller application process
-    seller_application_process = models.TextField(blank=True)
-    # Registration fee
-    registration_fee = models.IntegerField(null=True)
-    # Subscription fee
-    subscription_fee = models.IntegerField(null=True)
-    # Referral fee
-    referral_fee = models.IntegerField(null=True)
-    # Additional operating costs
-    additional_operating_costs = models.IntegerField(null=True)
-    # Shipping and fulfillment details (comma separated maybe?)
-    shipping_fulfillment_details = models.TextField(blank=True)
-    # Online marketing (comma separated maybe?)
-    online_marketing = models.TextField(blank=True)
-    # Payment details
-    # Payment credit card
-    payment_credit_card = models.NullBooleanField()
-    # Payment debit card
-    payment_debit_card = models.NullBooleanField()
-    # Payment cod
-    payment_cod = models.NullBooleanField()
-    # Payment bank transfer
-    payment_bank_transfer = models.NullBooleanField()
-    # Payment paypal
-    payment_pay_pal = models.NullBooleanField()
-    # Payment other
-    payment_other = models.TextField(blank=True)
-    # Listing language details
-    # Listing english
-    listing_english = models.NullBooleanField()
-    # Listing local
-    listing_local = models.NullBooleanField()
-    # Logistics details
-    # Logistic full
-    logistic_full = models.NullBooleanField()
-    # Logistics partial
-    logistic_partial = models.NullBooleanField()
-    # Logistic DIY
-    logistic_diy = models.NullBooleanField()
-    # Position in the market
-    # Premium
-    position_premium = models.NullBooleanField()
-    # Midpoint
-    position_midpoint = models.NullBooleanField()
-    # Discount
-    position_discount = models.NullBooleanField()
+
+    # Trading name of the marketplace
+    name = models.CharField(max_length=200, null=True)
+    # Description of the marketplace suitable for a seller.
+    description = models.CharField(max_length=200, null=True)
+    # URL of the market
+    web_address = models.URLField(max_length=200, blank=True, null=True)
+    # Image of the marketplace logo
+    logo = models.ImageField(null=True)
+    # Country where the marketplace operates
+    country = models.CharField(max_length=200, blank=True, null=True)
+    # Region where the marketplace operates
+    region = models.CharField(max_length=200, blank=True, null=True)
+    # Industry standard for product categories.
+    product_categories = models.CommaSeparatedIntegerField(max_length=500, blank=True, null=True)
+    # Uses the field product_categories, for each category provides a demand value
+    product_category_demand = models.CommaSeparatedIntegerField(max_length=500, blank=True, null=True)
+    # The number of buyers, sellers on a marketplace.
+    size = models.TextField(null=True)
+    # The number of buyers, sellers for a particular product/product category on a marketplace.
+    product_category_size = models.CommaSeparatedIntegerField(max_length=10000, blank=True, null=True)
+    # Number of users going to the website per day on average.
+    web_traffic_to_site = models.BigIntegerField(null=True)
+    # Number of users bouncing from the website per day on average.
+    web_traffic_to_bounce = models.BigIntegerField(null=True)
+    # Structure of the fees and costs for sellers on the marketplace.
+    fee_pricing_structure = models.TextField(null=True)
+    # Terms in place for sellers to receive payment from e-marketplace
+    payment_terms = models.TextField(null=True)
+    # Structure of the logistics and fulfillment for the e-marketplace.
+    logistics_structure = models.TextField(null=True)
+    # Type of support offered to sellers on the e-marketplace.
+    seller_support_structure = models.TextField(null=True)
+    # Translation services offered for communication between buyers and sellers
+    # and/or translation of product/marketing material for a site.
+    translation_services = models.TextField(null=True)
+    # Customer service offered to buyers on the e-marketplace
+    buyers_customer_service = models.TextField(null=True)
+    # Details of the merchandising offer and associated costs involved
+    # (fe. marketing, feature to bump your product up on listings)
+    merchandising_offer_cost = models.TextField(null=True)
+    # The payment methods for buyers on the e-marketplace. (fe. Card, PayPal)
+    payment_methods = models.TextField(null=True)
+    # Languages offered for listing products on the e-marketplace
+    listing_languages = models.CharField(max_length=500, blank=True, null=True)
+    # The number of other sellers for a product/product category on the e-marketplace.
+    product_visibility = models.TextField(null=True)
+    # The types of sellers for product/product category on the e-marketplace.
+    competitor_comparison = models.TextField(null=True)
+    # What terms has been negotiated on behalf of UK Businesses by UKTI
+    ukti_terms = models.TextField(null=True)
+    # Marketplace contacts which are supplied from UKTI for sellers.
+    contact_details = models.TextField(null=True)
+    # List of steps a seller needs to go through to sell on the platform.
+    shop_analytics = models.TextField(null=True)
+    # Tailoring options, themes, etc.
+    customization = models.TextField(null=True)
+    # Reviews, ratings, etc.
+    feedback_system = models.TextField(null=True)
 
     def __str__(self):
-        return "{0} {1}".format(self.country, self.company_name)
+        return "{0} {1}".format(self.country, self.name)
 
     class Meta:
         ordering = ('country',)
