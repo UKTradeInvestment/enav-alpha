@@ -4,7 +4,10 @@
   <div class="grid-row">
 
     <div class="column-one-third">
-      <p>filter</p>
+      <form method="get" action="{% url 'markets:list' %}">
+        {{ form.as_p }}
+        <input type='submit' value='submit'/>
+      </form>
     </div>
 
     <div class="column-two-thirds">
