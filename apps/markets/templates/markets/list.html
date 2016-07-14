@@ -1,9 +1,23 @@
-{% if markets_list %}
-  <ul>
-  {% for market in markets_list %}
-    <li><a href="{% url 'markets:detail' market.id %}">{{ market }}</a></li>
-  {% endfor %}
-  </ul>
-{% else %}
-  <p>No market options are available.</p>
-{% endif %}
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <p>filter</p>
+    </div>
+
+    <div class="column-two-thirds">
+      {% if markets_list %}
+      <ul>
+        {% for market in markets_list %}
+        <li><a href="{% url 'markets:detail' market.id %}">{{ market }}</a></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No market options are available.</p>
+      {% endif %}
+    </div>
+
+  </div>
+{% endblock content %}

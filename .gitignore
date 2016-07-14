@@ -92,3 +92,6 @@ environment.sh
 
 # nodes #
 node_modules/
+
+# webstorm
+.idea/
