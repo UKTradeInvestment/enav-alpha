@@ -6,8 +6,8 @@ from ..models import Market
 def create_market(**variable_data):
     if 'country' not in variable_data:
         variable_data['country'] = 'uk'
-    if 'company_name' not in variable_data:
-        variable_data['company_name'] = "Amazon"
+    if 'name' not in variable_data:
+        variable_data['name'] = "Amazon"
     market = Market(**variable_data)
     market.save()
     return market
@@ -25,10 +25,10 @@ class MarketListTests(TestCase):
         self.assertContains(response, str(market), status_code=200)
 
     def test_list_market_filter(self):
-        market = create_market(company_name="Amazon")
-        response = self.client.get(reverse('markets:list'), {'company_name': market.company_name})
+        market = create_market(name="Amazon")
+        response = self.client.get(reverse('markets:list'), {'name': market.name})
         self.assertContains(response, str(market), status_code=200)
-        response = self.client.get(reverse('markets:list'), {'company_name': "FakeCompany"})
+        response = self.client.get(reverse('markets:list'), {'name': "FakeCompany"})
         self.assertContains(response, 'No market options are available', status_code=200)
 
 

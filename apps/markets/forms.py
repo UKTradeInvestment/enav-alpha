@@ -56,5 +56,5 @@ class MarketFilterForm(ModelFilterForm):
 
     class Meta:
         model = Market
-        fields = ['company_name', ]
-        query_fields = ['company_name', ]
+        fields = ['name', ]
+        query_fields = ['name', ]
