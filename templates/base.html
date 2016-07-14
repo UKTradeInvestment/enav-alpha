@@ -21,25 +21,32 @@
     {% endblock head_favicon %}
     {% block head_css %}
       <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
+      <link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">
     {% endblock head_css %}
   </head>
   <body>
-    <header role="banner">
+    <header role="banner" id="global-header" class="">
       {% block header %}
-        <nav role="navigation">
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </nav>
+      <div class="header-wrapper">
+        <div class="header-global">
+          <div class="header-logo">
+            <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
+              <img src="{% static "images/gov.uk_logotype_crown_invert_trans.png" %}" width="35" height="31" alt=""> GOV.UK
+            </a>
+          </div>
+        </div>
+      </div>
       {% endblock header %}
     </header>
     <main role="main">
-      {% block content %}{% endblock content %}
+      <div id="content">
+        {% block content %}{% endblock content %}
+      </div>
     </main>
-    <footer role="contentinfo">
+    <footer class="group js-footer" id="footer" role="contentinfo">
       {% block footer %}
-        <p>footer</p>
+      <div class="footer-wrapper">
+      </div>
       {% endblock footer %}
     </footer>
     {% block footer_javascript %}
