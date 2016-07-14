@@ -58,3 +58,16 @@ class MarketFilterForm(ModelFilterForm):
         model = Market
         fields = ['name', ]
         query_fields = ['name', ]
+
+
+class HomepageForm(ModelFilterForm):
+
+    class Meta:
+        model = Market
+        fields = ['country', ]
+        query_fields = ['country', ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in self.Meta.query_fields:
+            self.fields[field_name] = QueryMultipleChoiceField(self.Meta.model, field_name)
