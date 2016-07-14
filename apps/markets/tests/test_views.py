@@ -24,6 +24,13 @@ class MarketListTests(TestCase):
         response = self.client.get(reverse('markets:list'))
         self.assertContains(response, str(market), status_code=200)
 
+    def test_list_market_filter(self):
+        market = create_market(company_name="Amazon")
+        response = self.client.get(reverse('markets:list'), {'company_name': market.company_name})
+        self.assertContains(response, str(market), status_code=200)
+        response = self.client.get(reverse('markets:list'), {'company_name': "FakeCompany"})
+        self.assertContains(response, 'No market options are available', status_code=200)
+
 
 class MarketDetailTests(TestCase):
 
