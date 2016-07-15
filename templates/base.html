@@ -20,21 +20,15 @@
       <link rel="icon" type="image/png" href="{% static "images/favicon.ico" %}">
     {% endblock head_favicon %}
     {% block head_css %}
-      <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
       <link href="{% static "stylesheets/govuk-template.css" %}" rel="stylesheet" media="screen">
+      <link href="{% static "stylesheets/main.css" %}" rel="stylesheet" media="screen">
     {% endblock head_css %}
   </head>
   <body>
     <header role="banner" id="global-header" class="">
       {% block header %}
       <div class="header-wrapper">
-        <div class="header-global">
-          <div class="header-logo">
-            <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
-              <img src="{% static "images/gov.uk_logotype_crown_invert_trans.png" %}" width="35" height="31" alt=""> GOV.UK
-            </a>
-          </div>
-        </div>
+        <div class="header-global"></div>
       </div>
       {% endblock header %}
     </header>
