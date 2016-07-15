@@ -8,12 +8,6 @@ from django.utils import timezone
 
 
 # SAMPLE DATA
-PRODUCT_CATEGORIES = (
-    ('0', 'Menswear'),
-    ('1', 'Womenswear')
-)
-
-# SAMPLE DATA
 PLATFORM_BRAND_POSITION = (
     ('0', 'Luxury'),
     ('1', 'mid'),
@@ -27,6 +21,16 @@ LISTING_LANGUAGES = (
     ('1', 'Spanish (spa)'),
     ('2', 'Chinese', ('cdo'))
 )
+
+
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('name',)
 
 
 class Market(models.Model):
@@ -44,7 +48,7 @@ class Market(models.Model):
     # Region where the marketplace operates
     region = models.CharField(max_length=200, blank=True, null=True)
     # Industry standard for product categories.
-    product_categories = models.CommaSeparatedIntegerField(max_length=500, blank=True, null=True)
+    product_categories = models.ManyToManyField(ProductCategory)
     # Uses the field product_categories, for each category provides a demand value
     product_category_demand = models.CommaSeparatedIntegerField(max_length=500, blank=True, null=True)
     # The number of buyers, sellers on a marketplace.
