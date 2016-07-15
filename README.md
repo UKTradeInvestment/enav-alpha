@@ -87,3 +87,13 @@ Tests include a pep8 style check, django test script and coverage report.
     workon enav-alpha
     ./scripts/run_tests.sh
 ```
+
+## Loading sample data
+
+Load 3 sample markets with product categories.
+
+```shell
+    workon enav-alpha
+    python manage.py loaddata ./apps/markets/fixtures/sample_data.json
+```
+
