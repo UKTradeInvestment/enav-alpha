@@ -1,4 +1,6 @@
 from django import forms
+from django.db import models
+
 from .models import Market
 
 
@@ -9,7 +11,15 @@ class QueryChoiceMixin(object):
     """
 
     def __init__(self, model, attr, *args, **kwargs):
-        choices = model.objects.all().values_list(attr, attr).distinct().order_by(attr)
+        model_field = model._meta.get_field(attr)
+        if isinstance(model_field, models.ManyToManyField):
+            related_model = model_field.related_model
+            choices = [(model.pk, "{0}".format(model)) for model in related_model.objects.all()]
+        elif len(model_field.choices) > 0:
+            choices = model_field.choices
+        else:
+            choices = model.objects.all().values_list(attr, attr).distinct().order_by(attr)
+
         return super().__init__(choices=choices, required=False, *args, **kwargs)
 
 
@@ -70,5 +80,5 @@ class HomepageForm(ModelFilterForm):
 
     class Meta:
         model = Market
-        fields = ['country', ]
-        query_fields = [('country', QueryMultipleChoiceField)]
+        fields = ['country', 'product_categories']
+        query_fields = [('country', QueryMultipleCheckboxField), ('product_categories', QueryMultipleCheckboxField)]
