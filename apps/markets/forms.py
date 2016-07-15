@@ -10,7 +10,7 @@ class QueryChoiceMixin(object):
 
     def __init__(self, model, attr, *args, **kwargs):
         choices = model.objects.all().values_list(attr, attr).distinct().order_by(attr)
-        return super().__init__(choices=choices, *args, **kwargs)
+        return super().__init__(choices=choices, required=False, *args, **kwargs)
 
 
 class QueryChoiceField(QueryChoiceMixin, forms.ChoiceField):
@@ -48,8 +48,14 @@ class ModelFilterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field_name in self.Meta.query_fields:
-            self.fields[field_name] = QueryMultipleCheckboxField(self.Meta.model, field_name)
+
+        try:
+            query_fields = self.Meta.query_fields
+        except AttributeError:
+            query_fields = []
+
+        for field_name, field_type in query_fields:
+            self.fields[field_name] = field_type(self.Meta.model, field_name)
 
 
 class MarketFilterForm(ModelFilterForm):
@@ -57,7 +63,7 @@ class MarketFilterForm(ModelFilterForm):
     class Meta:
         model = Market
         fields = ['name', ]
-        query_fields = ['name', ]
+        query_fields = [('name', QueryMultipleCheckboxField)]
 
 
 class HomepageForm(ModelFilterForm):
@@ -65,9 +71,4 @@ class HomepageForm(ModelFilterForm):
     class Meta:
         model = Market
         fields = ['country', ]
-        query_fields = ['country', ]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field_name in self.Meta.query_fields:
-            self.fields[field_name] = QueryMultipleChoiceField(self.Meta.model, field_name)
+        query_fields = [('country', QueryMultipleChoiceField)]
