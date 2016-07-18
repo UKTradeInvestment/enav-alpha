@@ -2,26 +2,22 @@
 
 {% block content %}
 
-  <div class="breadcrumbs">
-    <ol>
-      <li><a href="/">EXPORTING IS GREAT home</a></li>
-      <li>Online Export</li>
-    </ol>
-  </div>
-
-  <div class="column-one-third">
-    <form method="get" action="{% url 'markets:list' %}">
-      {{ form.as_p }}
-      <input type='submit' value='submit'/>
-    </form>
+  <div class="grid-row">
+    <div class="column-one-whole  cf">
+      <form method="get" action="{% url 'markets:list' %}">
+        {{ form.as_p }}
+        <input type='submit' value='submit'/>
+      </form>
+    </div>
   </div>
 
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-one-whole heading">
       <h1 class="heading-large">
-        <span class="heading-secondary">find your place</span>
-        {{ markets_list.count }} options found
+        <span class="heading-secondary">Find your marketplace</span>
+        {{ markets_list.count }} option{{markets_list|pluralize}} found
       </h1>
+      <p class="heading-last-updated font-xsmall">Last updated: 15/07/16</p>
     </div>
   </div>
 
@@ -30,38 +26,33 @@
       {% if markets_list %}
       <ul class="list list-market">
         {% for market in markets_list %}
-          <li class="list-market--item">
+          <li class="list-market--item cf">
             <div class="column-three-fifths">
-              <div class="column-one-quarter hard--left">
-                <img src="http://placehold.it/100x100">
+              <div class="push--right">
+                <div class="cf">
+                  <div class="column-one-quarter hard--left">
+                    <img src="http://placehold.it/100x100" class="image-full">
+                  </div>
+                  <div class="column-three-quarters">
+                    <div class="push--left">
+                      <h3 class="heading-medium flush--top push--bottom">{{ market }}</h3>
+                      <ul>
+                        <li class="list-market--info">Region: {{ market.region }}</li>
+                        <li class="list-market--info">Country: {{ market.country }}</li>
+                        <li class="list-market--info">Website: <a href="{{ market.website }}">{{ market.website }}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="soft--top column-one-whole hard--left">{{ market.description }}</p>
+                <a href="{% url 'markets:detail' market.id %}">More details</a>
               </div>
-              <div class="column-three-quarters">
-                <h3 class="heading-medium flush--top push-half--bottom">{{ market }}</h3>
-                <ul>
-                  <li class="list-market--info">Region: North Hemisphere</li>
-                  <li class="list-market--info">Country: Random</li>
-                  <li class="list-market--info">Website: <a href="">www.website.com</a></li>
-                </ul>
-              </div>
-              <p class="soft--top cf">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut urna gravida, auctor metus maximus, sodales lectus. Donec laoreet, risus non mattis.</p>
-              <a href="{% url 'markets:detail' market.id %}">More details</a>
-
             </div>
             <div class="column-two-fifths background--grey">
-              <ul class="soft">
-                <li class="list list-market--extra">
-                  <h4 class="font-xsmall">Monthly unique visitors</h4>
-                  <p class="flush--bottom lede">100 million</p>
-                </li>
-                <li class="list list-market--extra">
-                  <h4 class="font-xsmall">Revenue (2015)</h4>
-                  <p class="flush--bottom lede">USD $1 million</p>
-                </li>
-                <li class="list list-market--extra">
-                  <h4 class="font-xsmall">Another important fact</h4>
-                  <p class="flush--bottom lede">000000</p>
-                </li>
-              </ul>
+              <div class="soft">
+                <h4 class="soft--ends lede">UKTI Terms</h4>
+                <p class="soft--bottom">{{ market.ukti_terms }}</p>
+              </div>
             </div>
           </li>
         {% endfor %}

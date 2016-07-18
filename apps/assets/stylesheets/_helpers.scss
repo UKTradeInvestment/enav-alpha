@@ -68,7 +68,14 @@ $half-spacing-unit: $base-spacing-unit/2;
  * and over in your markup.
  */
 .cf{
-  content:"";
-  display:table;
-  clear:both;
+  &:after{
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+.image {
+  &-full {
+    width: 100%;
+  }
 }
