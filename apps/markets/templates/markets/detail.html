@@ -2,19 +2,167 @@
 
 {% block content %}
 
-  <div class="breadcrumbs">
-    <ol>
-      <li><a href="/">EXPORTING IS GREAT home</a></li>
-      <li>Online Export</li>
-    </ol>
+  <div class='grid-row'>
+    <h1 class='heading-xlarge column-three-quarters'>{{market.name}}</h1>
+    <p class='column-one-quarter'>Last updated: 15/07/2016</p>
   </div>
 
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <h1 class="heading-large">
-        {{ market  }}
-      </h1>
+  <div class='grid-row detail-intro'>
+    <div class='column-one-half'>
+      <img src='{{market.logo}}'>
+      <dl>
+        <dt>Region:</dt>
+        <dd>{{market.region}}</dd>
+        <dt>Country:</dt>
+        <dd>{{market.country}}</dd>
+        <dt>Website:</dt>
+        <dd><a href='{{market.web_address}}'>{{market.web_address}}</a></dd>
+      </dl>
+      <p>{{market.description}}</p>
+    </div>
+    <div class='column-one-half'>
+      <div class='detail-ukti-terms'>
+        <h2 class='heading-medium'>UKTI Terms</h2>
+        <p>{{market.ukti_terms}}</p>
+      </div>
     </div>
   </div>
 
+  <h2 class='visually-hidden'>Marketplace details</h2>
+
+  <div class='grid-row detail-row'>
+    <h3>Site</h3>
+    <dl>
+      <li>
+        <dt>Site traffic</dt>
+        <dd>{{market.web_traffic_to_site}}</dd>
+        <dd>{{market.web_traffic_to_bounce}}</dd>
+      </li>
+      <li>
+        <dt>Size</dt>
+        <dd>{{market.size}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Products</h3>
+    <dl>
+      <li>
+        <dt>Listed products</dt>
+        <dd>
+          <ul>
+            {% for category in market.product_categories.all %}
+              <li>{{category}}</li>
+            {% endfor %}
+          </ul>
+        </dd>
+      </li>
+      <li>
+        <dt>Product category demand</dt>
+        <dd>{{market.product_category_demand}}</dd>
+      </li>
+      <li>
+        <dt>Product category size</dt>
+        <dd>{{market.product_category_size}}</dd>
+      </li>
+      <li>
+        <dt>Product visibility</dt>
+        <dd>{{market.product_visibility}}</dd>
+      </li>
+      <li>
+        <dt>Competitor comparison</dt>
+        <dd>{{market.competitor_comparison}}</dd>
+      </li>
+      <li>
+        <dt>Positioning</dt>
+        <dd>Mid-range</dd>
+      </li>
+      <li>
+        <dt>Listing languages</dt>
+        <dd>{{market.listing_languages}}</dd>
+      </li>
+      <hr>
+      <li class='wider'>
+        <dt>Customer Service &amp; Returns</dt>
+        <dd>{{market.buyers_customer_service}}</dd>
+      </li>
+      <li>
+        <dt>Payment systems used</dt>
+        <dd>{{market.payment_methods}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Application process and fees</h3>
+    <dl>
+      <li>
+        <dt>Fee pricing structure</dt>
+        <dd>{{market.fee_pricing_structure}}</dd>
+      </li>
+      <li>
+        <dt>Payment terms</dt>
+        <dd>{{market.payment_terms}}</dd>
+      </li>
+      <li>
+        <dt>Merchandising offer cost</dt>
+        <dd>{{market.merchandising_offer_cost}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Logistics &amp; fulfillment</h3>
+    <dl>
+      <li>
+        <dt>Logistics structure</dt>
+        <dd>{{market.logistics_structure}}</dd>
+      </li>
+      <li>
+        <dt>Seller support structure</dt>
+        <dd>{{market.seller_support_structure}}</dd>
+      </li>
+      <li>
+        <dt>Translation services</dt>
+        <dd>{{market.translation_services}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Legal requirements</h3>
+    <dl>
+      {# FIXME hardcoded #}
+      <li>
+        <dt>Prohibited items</dt>
+        <dd>
+          — Adult products<br>
+          — Drugs &amp; Dietary Supplements<br>
+          — Kindle / Fire Accessories<br>
+          — Offensive Products<br>
+          — Recalled Products<br>
+        </dd>
+      </li>
+      {# FIXME hardcoded #}
+      <li>
+        <dt>Local laws</dt>
+        <dd>
+          <p>
+            Attorney for Custom Procedures (ACP) is required to import goods
+            into Japan if the seller does not have an importer (Amazon can refer).
+          </p>
+          <p>
+            For more details, please visit:
+            <a href='#TODO'>http://services.amazon.co.jp/services/out-of-country/en/local-laws.html?id=EL-UKTI-Req</a>
+        </dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row next-steps'>
+    <h2>Next steps</h2>
+    <p>To register interest and start the process please fill out this form.</p>
+    <a href='#TODO' class='button'>Regsiter your interest</a>
+  </div>
 {% endblock content %}
