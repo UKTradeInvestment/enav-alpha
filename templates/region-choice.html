@@ -6,6 +6,7 @@
 
   <p>Please select all that apply</p>
   <form method="get" action="{% url 'product-choice' %}">
+    <div class='cf push--bottom'>
       {% for field in form %}
         {% for radio in field %}
           <label for="{{ radio.id_for_label }}" class='block-label'>
@@ -14,7 +15,7 @@
           </label>
         {% endfor %}
       {% endfor %}
-    <div style='clear:both' href='#FIXME'></div>
+    </div>
     <button class='button' type='submit'>Next step</button>
   </form>
 {% endblock content %}
