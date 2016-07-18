@@ -42,7 +42,7 @@ class Market(models.Model):
     # URL of the market
     web_address = models.URLField(max_length=200, blank=True, null=True)
     # Image of the marketplace logo
-    logo = models.ImageField(null=True, blank=True)
+    logo = models.ImageField(upload_to='market_logos', null=True, blank=True)
     # Country where the marketplace operates
     country = models.CharField(max_length=200, blank=True, null=True)
     # Region where the marketplace operates
