@@ -20,7 +20,7 @@ class MarketListView(generic.ListView):
         for key, items in self.request.GET.lists():
             _filter["{}__in".format(key)] = items
 
-        return Market.objects.filter(**_filter)
+        return Market.objects.filter(**_filter).distinct()
 
 
 class MarketDetailView(generic.DetailView):
