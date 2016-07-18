@@ -2,22 +2,23 @@
 
 {% block content %}
   <h1 class="heading-large">Find international e-marketplaces for your business to export</h1>
-  <p>Which region do you have in mind to export to?</p>
+  <p>Which products categories do you have in mind to export?</p>
 
   <p>Please select all that apply</p>
   <form method="get" action="{% url 'markets:list' %}">
-    {% for region in regions %}
-      <input type='hidden' name='region' value='{{region}}'>
-    {% endfor %}
-    {% for field in form %}
-      {% for radio in field %}
-        <label for="{{ radio.id_for_label }}" class='block-label'>
-          {{ radio.choice_label }}
-          <span class="radio">{{ radio.tag }}</span>
-        </label>
+    <div class='cf push--bottom'>
+      {% for region in regions %}
+        <input type='hidden' name='region' value='{{region}}'>
       {% endfor %}
-    {% endfor %}
-    <div style='clear:both' href='#FIXME'></div>
+      {% for field in form %}
+        {% for radio in field %}
+          <label for="{{ radio.id_for_label }}" class='block-label'>
+            {{ radio.choice_label }}
+            <span class="radio">{{ radio.tag }}</span>
+          </label>
+        {% endfor %}
+      {% endfor %}
+    </div>
     <button class='button' type='submit'>Next step</button>
   </form>
 {% endblock content %}
