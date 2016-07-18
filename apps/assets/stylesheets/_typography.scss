@@ -1,8 +1,14 @@
-.heading-large {
-  margin-top: 10px;
+.heading {
+  position: relative;
+  &-large {
+    margin-top: 10px;
+  }
 
-  .heading-secondary {
-    text-transform: uppercase;
+  &-last-updated {
+    position: absolute;
+    right: 45px;
+    top: 53px;
+    color: $grey-1;
   }
 }
 
