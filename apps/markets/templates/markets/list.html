@@ -42,10 +42,23 @@
               </div>
             </div>
             <div class="column-two-fifths background--grey">
-              <div class="soft">
-                <h4 class="soft--ends lede">UKTI Terms</h4>
-                <p class="soft--bottom">{{ market.ukti_terms }}</p>
-              </div>
+              <ul class="soft">
+                <li class="list list-market--extra">
+
+                  <h4 class="font-xxsmall">Website traffic</h4>
+                  <p class="flush--bottom">{{ market.web_traffic_to_site }}</p>
+                  <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure }}</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service }}</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">Application process: Easy</p>
+                </li>
+              </ul>
             </div>
           </li>
         {% endfor %}
