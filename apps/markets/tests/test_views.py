@@ -39,7 +39,7 @@ class MarketDetailTests(TestCase):
         response = self.client.get(reverse(
             'markets:detail',
             kwargs={'pk': market.pk}))
-        self.assertContains(response, str(market), status_code=200)
+        self.assertContains(response, market.name, status_code=200)
 
     def test_detail_404(self):
         response = self.client.get(reverse(
