@@ -12,6 +12,26 @@ li {
       line-height: 17px;
     }
 
+    &--extra {
+      border-bottom: 1px solid $white;
+      margin: 0;
+      padding-bottom: 10px;
+      padding-top: 10px;
+
+      &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      p {
+        width: 80%;
+      }
+    }
+
   }
 }
 
