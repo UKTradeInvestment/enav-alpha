@@ -1,6 +1,10 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 
 from .forms import ProductChoiceForm, RegionChoiceForm
+
+
+class HomepageView(TemplateView):
+    template_name = 'homepage.html'
 
 
 class RegionChoiceView(FormView):
