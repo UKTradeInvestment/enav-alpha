@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.markets2',
     'apps.markets3',
     'apps.markets',
+    'apps.contact',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,3 +148,14 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+try:
+    from email_settings import *
+except ImportError:
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.example.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'username'
+    EMAIL_HOST_PASSWORD = 'PASSWORD'
+    ADMINS = ()
+    MANAGERS = ()

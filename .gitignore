@@ -101,3 +101,5 @@ node_modules/
 .idea/
 
 *.DS_Store
+
+enav_alpha/email_settings.py
