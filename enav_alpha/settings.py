@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'ckeditor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -128,3 +129,17 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'format_tags': 'p;h1;h2;h3;h4;h5',
+        'toolbar_Custom': [
+            ['Format', 'Bold', 'Italic', 'Underline', 'Strike'],
+            ['BulletedList', 'NumberedList'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat']
+        ]
+    },
+}
