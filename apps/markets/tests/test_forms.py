@@ -1,17 +1,9 @@
 from django.test import TestCase
 from django import forms
+from django.core.files.uploadedfile import SimpleUploadedFile
 from ..models import Market
-from ..forms import QueryChoiceField, QueryMultipleChoiceField, QueryMultipleCheckboxField
-
-
-def create_market(**variable_data):
-    if 'country' not in variable_data:
-        variable_data['country'] = 'uk'
-    if 'name' not in variable_data:
-        variable_data['name'] = "Amazon"
-    market = Market(**variable_data)
-    market.save()
-    return market
+from ..forms import (QueryChoiceField, QueryMultipleChoiceField, QueryMultipleCheckboxField, LogoAdminForm)
+from . import (create_market, create_logo, load_sample_png)
 
 
 class QueryChoicesMixinTests(object):
@@ -64,3 +56,26 @@ class QueryMultipleCheckboxFieldTests(TestCase, QueryChoicesMixinTests):
         self.assertListEqual(field.choices, [])
         self.assertIsInstance(field.widget, forms.widgets.CheckboxSelectMultiple)
         self.assertTrue(field.widget.allow_multiple_selected)
+
+
+class LogoAdminFormTests(TestCase):
+
+    def test_file_validation(self):
+        upload_file = load_sample_png()
+        post_dict = {'name': 'logo'}
+        file_dict = {'logo': SimpleUploadedFile(upload_file.name, upload_file.read())}
+        form = LogoAdminForm(post_dict, file_dict)
+        self.assertTrue(form.is_valid())
+
+    def test_invalid_file(self):
+        post_dict = {'name': 'logo'}
+        file_dict = {'logo': SimpleUploadedFile("test.png", b'')}
+        form = LogoAdminForm(post_dict, file_dict)
+        self.assertFalse(form.is_valid())
+
+    def test_invalid_filename(self):
+        upload_file = load_sample_png()
+        post_dict = {'name': 'logo'}
+        file_dict = {'logo': SimpleUploadedFile("test.jpg", upload_file.read())}
+        form = LogoAdminForm(post_dict, file_dict)
+        self.assertFalse(form.is_valid())

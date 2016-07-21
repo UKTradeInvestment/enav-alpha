@@ -1,16 +1,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
-from ..models import Market
-
-
-def create_market(**variable_data):
-    if 'country' not in variable_data:
-        variable_data['country'] = 'uk'
-    if 'name' not in variable_data:
-        variable_data['name'] = "Amazon"
-    market = Market(**variable_data)
-    market.save()
-    return market
+from ..models import Market, Logo
+from . import create_market, create_logo
 
 
 class MarketListTests(TestCase):
@@ -21,8 +12,12 @@ class MarketListTests(TestCase):
 
     def test_list_markets(self):
         market = create_market()
+        logo = create_logo()
+        market.logo = logo
+        market.save()
         response = self.client.get(reverse('markets:list'))
         self.assertContains(response, str(market), status_code=200)
+        self.assertContains(response, logo._encoded_data, status_code=200)
 
     def test_list_market_filter(self):
         market = create_market(name="Amazon")
@@ -36,10 +31,14 @@ class MarketDetailTests(TestCase):
 
     def test_detail_market(self):
         market = create_market()
+        logo = create_logo()
+        market.logo = logo
+        market.save()
         response = self.client.get(reverse(
             'markets:detail',
             kwargs={'pk': market.pk}))
         self.assertContains(response, market.name, status_code=200)
+        self.assertContains(response, logo._encoded_data, status_code=200)
 
     def test_detail_404(self):
         response = self.client.get(reverse(

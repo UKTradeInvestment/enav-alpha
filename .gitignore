@@ -46,7 +46,7 @@ coverage.xml
 .hypothesis/
 
 enav_alpha/staticfiles/images*
-enav_alpah/staticfiles/javascripts*
+enav_alpha/staticfiles/javascripts*
 enav_alpha/staticfiles/stylesheets*
 
 # Translations
