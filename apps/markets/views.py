@@ -6,7 +6,7 @@ from .forms import MarketFilterForm, HomepageForm
 
 
 class MarketListView(generic.ListView):
-    template_name = 'markets/list.html'
+    template_name = 'list.html'
     context_object_name = 'markets_list'
 
     def get_context_data(self, *args, **kwargs):
@@ -25,4 +25,4 @@ class MarketListView(generic.ListView):
 
 class MarketDetailView(generic.DetailView):
     model = Market
-    template_name = 'markets/detail.html'
+    template_name = 'detail.html'

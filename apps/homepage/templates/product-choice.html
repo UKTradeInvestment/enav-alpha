@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
   <h1 class="heading-large">Find international e-marketplaces for your business to export</h1>
   <p>Which products categories do you have in mind to export?</p>
 
@@ -20,6 +21,6 @@
       {% endfor %}
     </div>
     <button class='button' type='submit'>Next step</button>
-    <a class='button skip' href='{% url 'markets:list' %}' style='background-color: #6F777B'>Skip this step</a>
+    <a class='button skip' href='{% url 'markets:list' %}?{{ request.GET.urlencode }}' style='background-color: #6F777B'>Skip this step</a>
   </form>
 {% endblock content %}
