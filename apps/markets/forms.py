@@ -74,7 +74,11 @@ class MarketFilterForm(ModelFilterForm):
     class Meta:
         model = Market
         fields = ['name', ]
-        query_fields = [('name', QueryMultipleCheckboxField)]
+        query_fields = [
+            ('name', QueryMultipleCheckboxField),
+            ('region', QueryMultipleCheckboxField),
+            ('country', QueryMultipleCheckboxField),
+        ]
 
 
 class HomepageForm(ModelFilterForm):
