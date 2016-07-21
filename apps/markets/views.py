@@ -1,7 +1,7 @@
 from django.views import generic
 from django.shortcuts import render
 
-from .models import Market
+from .models import Market, Logo
 from .forms import MarketFilterForm, HomepageForm
 
 

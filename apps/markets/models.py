@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
-
-from django.db import models
-
+import base64
 import datetime
 
+from django.db import models
 from django.utils import timezone
 
 
@@ -33,6 +32,17 @@ class ProductCategory(models.Model):
         ordering = ('name',)
 
 
+class Logo(models.Model):
+    name = models.CharField(max_length=200)
+    _encoded_data = models.TextField()
+
+    def base64_logo(self):
+        return self._encoded_data
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+
 class Market(models.Model):
 
     # Trading name of the marketplace
@@ -42,7 +52,7 @@ class Market(models.Model):
     # URL of the market
     web_address = models.URLField(max_length=200, blank=True, null=True)
     # Image of the marketplace logo
-    logo = models.ImageField(upload_to='market_logos', null=True, blank=True)
+    logo = models.ForeignKey('Logo', null=True, blank=True)
     # Country where the marketplace operates
     country = models.CharField(max_length=200, blank=True, null=True)
     # Region where the marketplace operates
