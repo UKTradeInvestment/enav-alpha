@@ -1,3 +1,6 @@
+// Path to assets for use with file-url()
+$path: "/static/images/";
+
 @import 'govuk-elements';
 @import 'govuk-frontend-toolkit';
 
@@ -8,3 +11,4 @@
 @import 'helpers';
 @import 'breadcrumbs';
 @import "detail-page";
+@import "choices";

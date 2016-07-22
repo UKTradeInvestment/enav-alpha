@@ -7,20 +7,33 @@
 
   <p>Please select all that apply</p>
   <form method="get" action="{% url 'markets:list' %}">
-    <div class='cf push--bottom'>
+    <div class='cf push--bottom grid-row'>
       {% for region in regions %}
         <input type='hidden' name='region' value='{{region}}'>
       {% endfor %}
       {% for field in form %}
         {% for radio in field %}
-          <label for="{{ radio.id_for_label }}" class='block-label'>
-            {{ radio.choice_label }}
-            <span class="radio">{{ radio.tag }}</span>
-          </label>
+          <div class='columnar'>
+            <label for="{{ radio.id_for_label }}" class='block-label'>
+              {{ radio.choice_label }}
+              <span class="radio">{{ radio.tag }}</span>
+            </label>
+          </div>
         {% endfor %}
       {% endfor %}
     </div>
     <button class='button' type='submit'>Next step</button>
     <a class='button skip' href='{% url 'markets:list' %}?{{ request.GET.urlencode }}' style='background-color: #6F777B'>Skip this step</a>
   </form>
+
+  <div class='notice'>
+    <i class='icon icon-important'>
+      <span class='visuallyhidden'>Warning</span>
+    </i>
+    <strong>
+      <a href='https://support.google.com/merchants/answer/160081?hl=en-GB&amp;ref_topic=3404778'>
+        Find out the category of your product by visiting this page.
+      </a>
+    </strong>
+  </div>
 {% endblock content %}
