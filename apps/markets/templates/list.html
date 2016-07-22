@@ -3,10 +3,12 @@
 {% load static %}
 
 {% block content %}
+  {% block comment %}
   <form method="get" action="{% url 'markets:list' %}">
     {{ form.as_p }}
     <input type='submit' value='submit'/>
   </form>
+  {% endblock comment %}
 
   <div class="grid-row">
     <div class="column-one-whole heading">
