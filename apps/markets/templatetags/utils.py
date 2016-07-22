@@ -18,3 +18,29 @@ def breadcrumblink(query, *params):
                 queryparams += "{0}={1}&".format(param, value)
 
     return queryparams[:-1].replace(' ', '+')
+
+
+@register.filter(name='regions')
+def get_regions(market):
+    """
+    Get a comma-separated list of regions the Market's serves
+    """
+
+    region_list = []
+    for country in market.countries_served.all():
+        if country not in region_list:
+            region_list.append(str(country.region))
+
+    region_list.sort(key=lambda region: region)
+    return ", ".join(region_list)
+
+
+@register.filter(name='countries')
+def get_countries(market):
+    """
+    Get a comma-separated list of countries the Market's serves
+    """
+
+    country_list = [str(country) for country in market.countries_served.all()]
+    country_list.sort(key=lambda country: country)
+    return ", ".join(country_list)
