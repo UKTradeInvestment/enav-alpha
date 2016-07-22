@@ -1,0 +1,8 @@
+div.columnar {
+    @include grid-column(1/3);
+    padding-bottom: 0.75em;
+}
+
+.notice {
+    margin-top: 2em;
+}

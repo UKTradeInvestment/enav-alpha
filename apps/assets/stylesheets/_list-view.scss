@@ -30,6 +30,13 @@ li {
       p {
         width: 80%;
       }
+
+      em {
+        @include core-27();
+        font-style: normal;
+        display: block;
+        line-height: 1.5 !important;
+      }
     }
 
   }
