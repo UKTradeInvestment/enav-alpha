@@ -6,7 +6,7 @@
 
   <div class='grid-row'>
     <h1 class='heading-xlarge column-three-quarters'>{{market.name}}</h1>
-    <p class='column-one-quarter'>Last updated: 15/07/2016</p>
+    <p class='column-one-quarter'>Last updated: {{ market.last_modified }}</p>
   </div>
 
   <div class='grid-row detail-intro'>
@@ -24,25 +24,40 @@
     </div>
     <div class='column-one-half'>
       <div class='detail-ukti-terms'>
-        <h2 class='heading-medium'>UKTI Terms</h2>
-        <p>{{market.ukti_terms|safe}}</p>
+        <ul class="soft">
+          <li class="list list-market--extra">
+            <h4 class="font-xxsmall">Website traffic</h4>
+            <p class="flush--bottom">{{ market.web_traffic_to_site }}</p>
+            <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure }}</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service }}</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">Application process: Easy</p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-
-  <h2 class='visually-hidden'>Marketplace details</h2>
 
   <div class='grid-row detail-row'>
     <h3>Site</h3>
     <dl>
       <li>
         <dt>Site traffic</dt>
-        <dd>{{market.web_traffic_to_site|safe}}</dd>
-        <dd>{{market.web_traffic_to_bounce|safe}}</dd>
+        <dd>{{market.web_traffic_to_site}}</dd>
       </li>
       <li>
-        <dt>Size</dt>
-        <dd>{{market.size|safe}}</dd>
+        <dt>Revenue</dt>
+        <dd>{{market.revenue}}</dd>
+      </li>
+      <li>
+        <dt>Parent company</dt>
+        <dd>{{market.parent_company_name}}</dd>
       </li>
     </dl>
   </div>
@@ -51,49 +66,24 @@
     <h3>Products</h3>
     <dl>
       <li>
-        <dt>Listed products</dt>
-        <dd>
-          <ul>
-            {% for category in market.product_categories.all %}
-              <li>{{category}}</li>
-            {% endfor %}
-          </ul>
-        </dd>
-      </li>
-      <li>
         <dt>Positioning</dt>
-        <dd>Mid-range</dd>
+        <dd>{{ market.platform_target_market }}</dd>
       </li>
       <li>
         <dt>Listing languages</dt>
-        <dd>{{market.listing_languages|safe}}</dd>
+        <dd>{{market.listing_languages}}</dd>
       </li>
-      <hr>
+      <li>
+        <dt>Product visibility</dt>
+        <dd>{{market.product_visibility}}</dd>
+      </li>
       <li class='wider'>
         <dt>Customer Service &amp; Returns</dt>
         <dd>{{market.buyers_customer_service|safe}}</dd>
       </li>
       <li>
-        <dt>Payment systems used</dt>
-        <dd>{{market.payment_methods|safe}}</dd>
-      </li>
-    </dl>
-  </div>
-
-  <div class='grid-row detail-row'>
-    <h3>Application process and fees</h3>
-    <dl>
-      <li>
-        <dt>Fee pricing structure</dt>
-        <dd>{{market.fee_pricing_structure|safe}}</dd>
-      </li>
-      <li>
-        <dt>Payment terms</dt>
-        <dd>{{market.payment_terms|safe}}</dd>
-      </li>
-      <li>
-        <dt>Merchandising offer cost</dt>
-        <dd>{{market.merchandising_offer_cost|safe}}</dd>
+        <dt>Product feedback system</dt>
+        <dd>{{market.product_feedback_system}}</dd>
       </li>
     </dl>
   </div>
@@ -102,16 +92,74 @@
     <h3>Logistics &amp; fulfillment</h3>
     <dl>
       <li>
-        <dt>Logistics structure</dt>
-        <dd>{{market.logistics_structure|safe}}</dd>
+        <dt>Logistics support</dt>
+        <dd>{{market.logistics_structure}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Application process and payment terms</h3>
+    <dl>
+      <li>
+        <dt>Seller application process</dt>
+        <dd>{{market.seller_application_process}}</dd>
       </li>
       <li>
-        <dt>Seller support structure</dt>
-        <dd>{{market.seller_support_structure|safe}}</dd>
+        <dt>Payment terms</dt>
+        <dd>{{market.payment_terms|safe}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Fees &amp; Pricing structure</h3>
+    <dl>
+      <li>
+        <dt>Subscription fee</dt>
+        <dd>{{market.subscription_fees}}</dd>
       </li>
       <li>
-        <dt>Translation services</dt>
-        <dd>{{market.translation_services|safe}}</dd>
+        <dt>Registration fee</dt>
+        <dd>{{market.registration_fees}}</dd>
+      </li>
+      <li>
+        <dt>Additional operating fees</dt>
+        <dd>{{market.additional_fees}}</dd>
+      </li>
+      <li>
+        <dt>UKTI Terms</dt>
+        <dd>{{market.additional_fees}}</dd>
+      </li>
+      <li>
+        <dt>Referral fees</dt>
+        <dd>{{market.referral_fees}}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Merchandising</h3>
+    <dl>
+      <li>
+        <dt>Shopfront customization</dt>
+        <dd>{{market.customization}}</dd>
+      </li>
+      <li>
+        <dt>Shop analytics</dt>
+        <dd>{{market.shop_analytics}}</dd>
+      </li>
+      <li>
+        <dt></dt>
+        <dd>{{market.additional_fees}}</dd>
+      </li>
+      <li>
+        <dt>UKTI Terms</dt>
+        <dd>{{market.additional_fees}}</dd>
+      </li>
+      <li>
+        <dt>Referral fees</dt>
+        <dd>{{market.referral_fees}}</dd>
       </li>
     </dl>
   </div>
