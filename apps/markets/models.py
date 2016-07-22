@@ -102,6 +102,10 @@ class Market(models.Model):
     shop_analytics = RichTextField(null=True, blank=True)
     # Tailoring options, themes, etc.
     customization = RichTextField(null=True, blank=True)
+    # Details of social media integrations
+    social_media_integration = RichTextField(null=True, blank=True)
+    # Details of product promotion options
+    product_promotion_options = RichTextField(null=True, blank=True)
     # Reviews, ratings, etc.
     feedback_system = RichTextField(null=True, blank=True)
     # Revenue of the business
