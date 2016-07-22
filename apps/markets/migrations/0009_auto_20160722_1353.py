@@ -23,7 +23,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='market',
             name='last_modified',
-            field=models.DateTimeField(auto_now=True, default=datetime.datetime(2016, 7, 22, 13, 53, 48, 890453, tzinfo=utc)),
+            field=models.DateTimeField(
+                auto_now=True,
+                default=datetime.datetime(2016, 7, 22, 13, 53, 48, 890453, tzinfo=utc)),
             preserve_default=False,
         ),
         migrations.AddField(
@@ -95,10 +97,5 @@ class Migration(migrations.Migration):
             model_name='market',
             name='listing_languages',
             field=ckeditor.fields.RichTextField(blank=True, max_length=500, null=True),
-        ),
-        migrations.AlterField(
-            model_name='market',
-            name='name',
-            field=ckeditor.fields.RichTextField(blank=True, null=True),
-        ),
+        )
     ]

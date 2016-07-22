@@ -47,7 +47,7 @@ class Logo(models.Model):
 class Market(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     # Trading name of the marketplace
-    name = RichTextField(null=True, blank=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
     # Description of the marketplace suitable for a seller.
     description = models.CharField(max_length=200, null=True, blank=True)
     # URL of the market
