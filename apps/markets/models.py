@@ -47,7 +47,7 @@ class Logo(models.Model):
 class Market(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     # Trading name of the marketplace
-    name = models.RichTextField(max_length=200, null=True, blank=True)
+    name = RichTextField(null=True, blank=True)
     # Description of the marketplace suitable for a seller.
     description = models.CharField(max_length=200, null=True, blank=True)
     # URL of the market
@@ -89,7 +89,7 @@ class Market(models.Model):
     # The payment methods for buyers on the e-marketplace. (fe. Card, PayPal)
     payment_methods = RichTextField(null=True, blank=True)
     # Languages offered for listing products on the e-marketplace
-    listing_languages = models.RichTextField(max_length=500, blank=True, null=True)
+    listing_languages = RichTextField(max_length=500, blank=True, null=True)
     # The number of other sellers for a product/product category on the e-marketplace.
     product_visibility = RichTextField(null=True, blank=True)
     # The types of sellers for product/product category on the e-marketplace.
