@@ -14,9 +14,9 @@
       <img src='{{ market.logo.base64_logo }}' width='100' height='100' alt=''>
       <dl>
         <dt>Region:</dt>
-        <dd>{{market.region}}</dd>
+        <dd>{{market.region|safe}}</dd>
         <dt>Country:</dt>
-        <dd>{{market.country}}</dd>
+        <dd>{{market.country|safe}}</dd>
         <dt>Website:</dt>
         <dd><a href='{{market.web_address}}'>{{market.web_address}}</a></dd>
       </dl>
@@ -25,7 +25,7 @@
     <div class='column-one-half'>
       <div class='detail-ukti-terms'>
         <h2 class='heading-medium'>UKTI Terms</h2>
-        <p>{{market.ukti_terms}}</p>
+        <p>{{market.ukti_terms|safe}}</p>
       </div>
     </div>
   </div>
@@ -37,12 +37,12 @@
     <dl>
       <li>
         <dt>Site traffic</dt>
-        <dd>{{market.web_traffic_to_site}}</dd>
-        <dd>{{market.web_traffic_to_bounce}}</dd>
+        <dd>{{market.web_traffic_to_site|safe}}</dd>
+        <dd>{{market.web_traffic_to_bounce|safe}}</dd>
       </li>
       <li>
         <dt>Size</dt>
-        <dd>{{market.size}}</dd>
+        <dd>{{market.size|safe}}</dd>
       </li>
     </dl>
   </div>
@@ -66,16 +66,16 @@
       </li>
       <li>
         <dt>Listing languages</dt>
-        <dd>{{market.listing_languages}}</dd>
+        <dd>{{market.listing_languages|safe}}</dd>
       </li>
       <hr>
       <li class='wider'>
         <dt>Customer Service &amp; Returns</dt>
-        <dd>{{market.buyers_customer_service}}</dd>
+        <dd>{{market.buyers_customer_service|safe}}</dd>
       </li>
       <li>
         <dt>Payment systems used</dt>
-        <dd>{{market.payment_methods}}</dd>
+        <dd>{{market.payment_methods|safe}}</dd>
       </li>
     </dl>
   </div>
@@ -85,15 +85,15 @@
     <dl>
       <li>
         <dt>Fee pricing structure</dt>
-        <dd>{{market.fee_pricing_structure}}</dd>
+        <dd>{{market.fee_pricing_structure|safe}}</dd>
       </li>
       <li>
         <dt>Payment terms</dt>
-        <dd>{{market.payment_terms}}</dd>
+        <dd>{{market.payment_terms|safe}}</dd>
       </li>
       <li>
         <dt>Merchandising offer cost</dt>
-        <dd>{{market.merchandising_offer_cost}}</dd>
+        <dd>{{market.merchandising_offer_cost|safe}}</dd>
       </li>
     </dl>
   </div>
@@ -103,15 +103,15 @@
     <dl>
       <li>
         <dt>Logistics structure</dt>
-        <dd>{{market.logistics_structure}}</dd>
+        <dd>{{market.logistics_structure|safe}}</dd>
       </li>
       <li>
         <dt>Seller support structure</dt>
-        <dd>{{market.seller_support_structure}}</dd>
+        <dd>{{market.seller_support_structure|safe}}</dd>
       </li>
       <li>
         <dt>Translation services</dt>
-        <dd>{{market.translation_services}}</dd>
+        <dd>{{market.translation_services|safe}}</dd>
       </li>
     </dl>
   </div>
