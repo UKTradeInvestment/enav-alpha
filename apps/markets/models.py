@@ -124,6 +124,8 @@ class Market(models.Model):
     referral_fees = RichTextField(null=True, blank=True)
     # Prohibited items of the platform
     prohibited_items = RichTextField(null=True, blank=True)
+    # Logistics options
+    logistics_options = RichTextField(null=True, blank=True)
     # Local laws related to the countries in which you want to ship to
     local_laws = RichTextField(null=True, blank=True)
     # Platform signup

@@ -86,6 +86,11 @@ class Migration(migrations.Migration):
             name='things_to_consider',
             field=ckeditor.fields.RichTextField(blank=True, null=True),
         ),
+        migrations.AddField(
+            model_name='market',
+            name='logistics_options',
+            field=ckeditor.fields.RichTextField(blank=True, null=True),
+        ),
         migrations.AlterField(
             model_name='market',
             name='listing_languages',
