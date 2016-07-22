@@ -122,6 +122,14 @@ class Market(models.Model):
     additional_fees = RichTextField(null=True, blank=True)
     # Referral fee of the platform
     referral_fees = RichTextField(null=True, blank=True)
+    # Prohibited items of the platform
+    prohibited_items = RichTextField(null=True, blank=True)
+    # Local laws related to the countries in which you want to ship to
+    local_laws = RichTextField(null=True, blank=True)
+    # Platform signup
+    platform_signup = RichTextField(null=True, blank=True)
+    # General things to consider
+    things_to_consider = RichTextField(null=True, blank=True)
 
     def __str__(self):
         return "{0} {1}".format(self.country, self.name)
