@@ -16,13 +16,13 @@ class MarketListTests(TestCase):
         market.logo = logo
         market.save()
         response = self.client.get(reverse('markets:list'))
-        self.assertContains(response, str(market), status_code=200)
+        self.assertContains(response, market.name, status_code=200)
         self.assertContains(response, logo._encoded_data, status_code=200)
 
     def test_list_market_filter(self):
         market = create_market(name="Amazon")
         response = self.client.get(reverse('markets:list'), {'name': market.name})
-        self.assertContains(response, str(market), status_code=200)
+        self.assertContains(response, market.name, status_code=200)
         response = self.client.get(reverse('markets:list'), {'name': "FakeCompany"})
         self.assertContains(response, 'No market options are available', status_code=200)
 
