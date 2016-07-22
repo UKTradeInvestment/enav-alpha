@@ -36,14 +36,14 @@
                     <div class="push--left">
                       <h3 class="heading-medium flush--top push--bottom">{{ market }}</h3>
                       <ul>
-                        <li class="list-market--info">Region: {{ market.region }}</li>
-                        <li class="list-market--info">Country: {{ market.country }}</li>
-                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address }}</a></li>
+                        <li class="list-market--info">Region: {{ market.region|safe }}</li>
+                        <li class="list-market--info">Country: {{ market.country|safe }}</li>
+                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <p class="soft--top column-one-whole hard--left">{{ market.description }}</p>
+                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
                 <a href="{% url 'markets:detail' market.id %}">More details</a>
               </div>
             </div>
@@ -52,14 +52,14 @@
                 <li class="list list-market--extra">
 
                   <h4 class="font-xxsmall">Website traffic</h4>
-                  <p class="flush--bottom">{{ market.web_traffic_to_site }}</p>
+                  <p class="flush--bottom">{{ market.web_traffic_to_site|safe }}</p>
                   <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
                 </li>
                 <li class="list list-market--extra">
-                  <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure }}</p>
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure|safe }}</p>
                 </li>
                 <li class="list list-market--extra">
-                  <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service }}</p>
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service|safe }}</p>
                 </li>
                 <li class="list list-market--extra">
                   <p class="font-xxsmall flush--bottom flush--top">Application process: Easy</p>
