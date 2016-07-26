@@ -1,4 +1,5 @@
-(function () {
+(function ($) {
+    "use strict";
     function insertParam(key, value) {
         key = escape(key); value = escape(value);
         var kvp = document.location.search.substr(1).split('&');
@@ -30,6 +31,33 @@
         }, false);
     }
 
-})();
+    /**
+     * Modifies structure if Javascript if enabled
+     */
+    var setLayout  = function() {
+        if(javascriptEnable()) {
+            $('.filters').removeClass('column-one-third');
+            $('.list-market').removeClass('column-two-thirds');
+        }
+    };
 
+    /**
+     * Check if Javascript is enable
+     * @returns {boolean}
+     */
+    var javascriptEnable = function() {
+        var body = document.body;
+        body.className = body.className.replace('no-js','js-enabled');
+        return body.classList.contains('js-enabled');
+    };
 
+    /**
+     * Initialisation
+     */
+    var init = function() {
+        setLayout();
+    };
+
+    $(init);
+
+})(jQuery);

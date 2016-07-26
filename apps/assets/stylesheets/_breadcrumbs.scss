@@ -3,8 +3,9 @@
     background-image: url('/static/images/separator-2x.png');
     background-size: 6px 11px;
 
-    &:last-child {
+    &:last-child a {
       color: $grey-1;
+      text-decoration: none;
     }
   }
 }
