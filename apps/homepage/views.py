@@ -1,18 +1,18 @@
 from django.views.generic import FormView, TemplateView
-
+from apps.markets.views.generics import EnavTemplateView, EnavFormView
 from .forms import ProductChoiceForm, RegionChoiceForm
 
 
-class HomepageView(TemplateView):
+class HomepageView(EnavTemplateView):
     template_name = 'homepage.html'
 
 
-class RegionChoiceView(FormView):
+class RegionChoiceView(EnavFormView):
     form_class = RegionChoiceForm
     template_name = 'region-choice.html'
 
 
-class ProductChoiceView(FormView):
+class ProductChoiceView(EnavFormView):
     form_class = ProductChoiceForm
     template_name = 'product-choice.html'
 

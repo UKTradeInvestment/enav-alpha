@@ -29,11 +29,48 @@
     <header role="banner" id="global-header" class="">
       {% block header %}
       <div class="header-wrapper">
-        <div class="header-global"></div>
+        <div class="header-global">
+          <select id="solution" style="float:right;">
+            <option value="1" {% if solution == 1 %}selected="selected"{% endif %}>Solution 1</option>
+            <option value="2" {% if solution == 2 %}selected="selected"{% endif %}>Solution 2</option>
+            <option value="3" {% if solution == 3 %}selected="selected"{% endif %}>Solution 3</option>
+          </select>
+          <script>
+            function insertParam(key, value) {
+              key = escape(key); value = escape(value);
+              var kvp = document.location.search.substr(1).split('&');
+              if (kvp == '') {
+                document.location.search = '?' + key + '=' + value;
+              }
+              else {
+                var i = kvp.length; var x; while (i--) {
+                  x = kvp[i].split('=');
+                  if (x[0] == key) {
+                    x[1] = value;
+                    kvp[i] = x.join('=');
+                    break;
+                  }
+                }
+                if (i < 0) {
+                  kvp[kvp.length] = [key, value].join('=');
+                }
+                document.location.search = kvp.join('&');
+              }
+            }
+
+            var element = document.getElementById("solution")
+            element.addEventListener("change", function(evnt) {
+              var el = evnt.target;
+              var value = el[el.selectedIndex].value;
+              insertParam('solution', value)
+            }, false);
+          </script>
+        </div>
       </div>
       {% endblock header %}
     </header>
     <main role="main">
+      solution = {{solution}}
       <div id="content">
         {% block breadcrumbs %}
           <div class="grid-row">

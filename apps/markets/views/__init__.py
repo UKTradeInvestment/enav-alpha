@@ -1,11 +1,11 @@
-from django.views import generic
 from django.shortcuts import render
 
-from .models import Market, Logo
-from .forms import MarketFilterForm
+from .generics import EnavListView, EnavDetailView
+from ..models import Market, Logo
+from ..forms import MarketFilterForm
 
 
-class MarketListView(generic.ListView):
+class MarketListView(EnavListView):
     template_name = 'list.html'
     context_object_name = 'markets_list'
 
@@ -23,6 +23,6 @@ class MarketListView(generic.ListView):
         return Market.objects.filter(**_filter).distinct()
 
 
-class MarketDetailView(generic.DetailView):
+class MarketDetailView(EnavDetailView):
     model = Market
     template_name = 'detail.html'
