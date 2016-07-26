@@ -44,6 +44,27 @@ class Logo(models.Model):
         return "{0}".format(self.name)
 
 
+class Region(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('-name',)
+
+
+class Country(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    region = models.ForeignKey(Region)
+
+    def __str__(self):
+        return "{0}".format(self.name)
+
+    class Meta:
+        ordering = ('-name',)
+
+
 class Market(models.Model):
 
     # Trading name of the marketplace
@@ -54,10 +75,10 @@ class Market(models.Model):
     web_address = models.URLField(max_length=200, blank=True, null=True)
     # Image of the marketplace logo
     logo = models.ForeignKey('Logo', null=True, blank=True)
-    # Country where the marketplace operates
+    # Country where the marketplace is based
     country = models.CharField(max_length=200, blank=True, null=True)
-    # Region where the marketplace operates
-    region = models.CharField(max_length=200, blank=True, null=True)
+    # That countries that have buyers for the marketplace
+    countries_served = models.ManyToManyField(Country)
     # Industry standard for product categories.
     product_categories = models.ManyToManyField(ProductCategory)
     # Uses the field product_categories, for each category provides a demand value

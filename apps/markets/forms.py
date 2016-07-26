@@ -12,6 +12,12 @@ class QueryChoiceMixin(object):
     """
 
     def __init__(self, model, attr, *args, **kwargs):
+        components = attr.split('__')
+        attr = components.pop()
+
+        for component in components:
+            model = model._meta.get_field(component).related_model
+
         model_field = model._meta.get_field(attr)
         if isinstance(model_field, models.ManyToManyField):
             related_model = model_field.related_model
@@ -59,7 +65,6 @@ class ModelFilterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         try:
             query_fields = self.Meta.query_fields
         except AttributeError:
@@ -76,17 +81,9 @@ class MarketFilterForm(ModelFilterForm):
         fields = ['name', ]
         query_fields = [
             ('name', QueryMultipleCheckboxField),
-            ('region', QueryMultipleCheckboxField),
-            ('country', QueryMultipleCheckboxField),
+            ('countries_served__region__name', QueryMultipleCheckboxField),
+            ('countries_served__name', QueryMultipleCheckboxField),
         ]
-
-
-class HomepageForm(ModelFilterForm):
-
-    class Meta:
-        model = Market
-        fields = ['country', 'product_categories']
-        query_fields = [('country', QueryMultipleCheckboxField), ('product_categories', QueryMultipleCheckboxField)]
 
 
 class LogoAdminForm(forms.ModelForm):

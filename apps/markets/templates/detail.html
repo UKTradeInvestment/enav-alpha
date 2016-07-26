@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static %}
+{% load static utils %}
 
 {% block content %}
 
@@ -14,9 +14,11 @@
       <img src='{{ market.logo.base64_logo }}' width='100' height='100' alt=''>
       <dl>
         <dt>Region:</dt>
-        <dd>{{market.region|safe}}</dd>
+        <dd>{{market|regions}}</dd>
         <dt>Country:</dt>
         <dd>{{market.country|safe}}</dd>
+        <dt>Countries served:</dt>
+        <dd>{{market|countries}}</dd>
         <dt>Website:</dt>
         <dd><a href='{{market.web_address}}'>{{market.web_address}}</a></dd>
       </dl>
