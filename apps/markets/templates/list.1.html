@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static utils %}
+
+{% block content %}
+  {% comment %}
+  <form method="get" action="{% url 'markets:list' %}">
+    {{ form.as_p }}
+    <input type='submit' value='submit'/>
+  </form>
+  {% endcomment %}
+
+  <div class="grid-row">
+    <div class="column-one-whole heading">
+      <h1 class="heading-large">
+        <span class="heading-secondary">Find your marketplace</span>
+        {{ markets_list.count }} option{{markets_list|pluralize}} found
+      </h1>
+    </div>
+  </div>
+
+  <div class="grid-row">
+
+      {% if markets_list %}
+      <ul class="list list-market">
+        {% for market in markets_list %}
+          <li class="list-market--item cf">
+            <div class="column-three-fifths">
+              <div class="push--right">
+                <div class="cf">
+                  <div class="column-three-quarters">
+                    <div class="push--left">
+                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                      <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a>
+                      <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No market options are available.</p>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock content %}

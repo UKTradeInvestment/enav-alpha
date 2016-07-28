@@ -18,7 +18,13 @@ class MarketListView(EnavListView):
         _filter = {}
 
         for key, items in self.request.GET.lists():
-            _filter["{}__in".format(key)] = items
+            attr = key.split('__')[0]
+            try:
+                Market._meta.get_field(attr)
+                _filter["{}__in".format(key)] = items
+            except:
+                # Ignore GET params that aren't on the model
+                pass
 
         return Market.objects.filter(**_filter).distinct()
 
