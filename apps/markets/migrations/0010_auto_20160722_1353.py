@@ -11,7 +11,7 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('markets', '0008_auto_20160721_1513'),
+        ('markets', '0009_auto_20160721_1546'),
     ]
 
     operations = [
