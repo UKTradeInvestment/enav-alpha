@@ -16,7 +16,6 @@
         <span class="heading-secondary">Find your marketplace</span>
         {{ markets_list.count }} option{{markets_list|pluralize}} found
       </h1>
-      <p class="heading-last-updated font-xsmall">Last updated: 15/07/16</p>
     </div>
   </div>
 
@@ -34,7 +33,7 @@
                   </div>
                   <div class="column-three-quarters">
                     <div class="push--left">
-                      <h3 class="heading-medium flush--top push--bottom">{{ market }}</h3>
+                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
                       <ul>
                         <li class="list-market--info">Region: {{ market|regions }}</li>
                         <li class="list-market--info">Country: {{ market.country|safe }}</li>
@@ -62,7 +61,7 @@
                   <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service|safe }}</p>
                 </li>
                 <li class="list list-market--extra">
-                  <p class="font-xxsmall flush--bottom flush--top">Application process: Easy</p>
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.platform_signup|safe }}</p>
                 </li>
               </ul>
             </div>

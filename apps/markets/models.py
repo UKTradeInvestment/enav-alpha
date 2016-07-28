@@ -66,7 +66,7 @@ class Country(models.Model):
 
 
 class Market(models.Model):
-
+    last_modified = models.DateTimeField(auto_now=True)
     # Trading name of the marketplace
     name = models.CharField(max_length=200, null=True, blank=True)
     # Description of the marketplace suitable for a seller.
@@ -110,7 +110,7 @@ class Market(models.Model):
     # The payment methods for buyers on the e-marketplace. (fe. Card, PayPal)
     payment_methods = RichTextField(null=True, blank=True)
     # Languages offered for listing products on the e-marketplace
-    listing_languages = models.CharField(max_length=500, blank=True, null=True)
+    listing_languages = RichTextField(max_length=500, blank=True, null=True)
     # The number of other sellers for a product/product category on the e-marketplace.
     product_visibility = RichTextField(null=True, blank=True)
     # The types of sellers for product/product category on the e-marketplace.
@@ -123,8 +123,40 @@ class Market(models.Model):
     shop_analytics = RichTextField(null=True, blank=True)
     # Tailoring options, themes, etc.
     customization = RichTextField(null=True, blank=True)
+    # Details of social media integrations
+    social_media_integration = RichTextField(null=True, blank=True)
+    # Details of product promotion options
+    product_promotion_options = RichTextField(null=True, blank=True)
     # Reviews, ratings, etc.
     feedback_system = RichTextField(null=True, blank=True)
+    # Revenue of the business
+    revenue = RichTextField(null=True, blank=True)
+    # Parent company name
+    parent_company_name = RichTextField(null=True, blank=True)
+    # Platform target market
+    platform_target_market = RichTextField(null=True, blank=True)
+    # Product feedback system
+    product_feedback_system = RichTextField(null=True, blank=True)
+    # The application process for signing up
+    seller_application_process = RichTextField(null=True, blank=True)
+    # The subscription fee of the platform
+    subscription_fees = RichTextField(null=True, blank=True)
+    # The registration fee of the platform
+    registration_fees = RichTextField(null=True, blank=True)
+    # Additional operating fees of the platform
+    additional_fees = RichTextField(null=True, blank=True)
+    # Referral fee of the platform
+    referral_fees = RichTextField(null=True, blank=True)
+    # Prohibited items of the platform
+    prohibited_items = RichTextField(null=True, blank=True)
+    # Logistics options
+    logistics_options = RichTextField(null=True, blank=True)
+    # Local laws related to the countries in which you want to ship to
+    local_laws = RichTextField(null=True, blank=True)
+    # Platform signup
+    platform_signup = RichTextField(null=True, blank=True)
+    # General things to consider
+    things_to_consider = RichTextField(null=True, blank=True)
 
     def __str__(self):
         return "{0} {1}".format(self.country, self.name)
