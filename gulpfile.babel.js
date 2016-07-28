@@ -9,6 +9,7 @@ import gulp from 'gulp';
 import stylish from 'jshint-stylish';
 import paths from './projectpath.babel';
 import loadPlugins from 'gulp-load-plugins';
+import karma from 'karma';
 
 const plugins = loadPlugins();
 
@@ -122,6 +123,12 @@ gulp.task('lint:js', () => gulp
 gulp.task('lint',
   ['lint:sass', 'lint:js']
 );
+
+gulp.task('js:tests', () => {
+    karma.server.start({
+        configFile: __dirname + '/karma.conf.js',
+    })
+});
 
 // Default: compile everything
 gulp.task('default',
