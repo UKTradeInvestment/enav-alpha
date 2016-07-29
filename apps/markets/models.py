@@ -158,6 +158,39 @@ class Market(models.Model):
     # General things to consider
     things_to_consider = RichTextField(null=True, blank=True)
 
+    # Misc fields
+    misc1 = RichTextField(null=True, blank=True)
+    misc2 = RichTextField(null=True, blank=True)
+    misc3 = RichTextField(null=True, blank=True)
+    misc4 = RichTextField(null=True, blank=True)
+    misc5 = RichTextField(null=True, blank=True)
+    misc6 = RichTextField(null=True, blank=True)
+    misc7 = RichTextField(null=True, blank=True)
+    misc8 = RichTextField(null=True, blank=True)
+    misc9 = RichTextField(null=True, blank=True)
+
+    misc10 = RichTextField(null=True, blank=True)
+    misc11 = RichTextField(null=True, blank=True)
+    misc12 = RichTextField(null=True, blank=True)
+    misc13 = RichTextField(null=True, blank=True)
+    misc14 = RichTextField(null=True, blank=True)
+    misc15 = RichTextField(null=True, blank=True)
+    misc16 = RichTextField(null=True, blank=True)
+    misc17 = RichTextField(null=True, blank=True)
+    misc18 = RichTextField(null=True, blank=True)
+    misc19 = RichTextField(null=True, blank=True)
+
+    misc20 = RichTextField(null=True, blank=True)
+    misc21 = RichTextField(null=True, blank=True)
+    misc22 = RichTextField(null=True, blank=True)
+    misc23 = RichTextField(null=True, blank=True)
+    misc24 = RichTextField(null=True, blank=True)
+    misc25 = RichTextField(null=True, blank=True)
+    misc26 = RichTextField(null=True, blank=True)
+    misc27 = RichTextField(null=True, blank=True)
+    misc28 = RichTextField(null=True, blank=True)
+    misc29 = RichTextField(null=True, blank=True)
+
     def __str__(self):
         return "{0} {1}".format(self.country, self.name)
 
