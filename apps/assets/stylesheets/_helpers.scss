@@ -83,3 +83,7 @@ $half-spacing-unit: $base-spacing-unit/2;
 .hide {
   display: none;
 }
+
+.float--right   { float:right; }
+.float--left    { float:left; }
+.float--none    { float:none; }
