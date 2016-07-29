@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load static utils %}
+
+{% block content %}
+  {% comment %}
+  <form method="get" action="{% url 'markets:list' %}">
+    {{ form.as_p }}
+    <input type='submit' value='submit'/>
+  </form>
+  {% endcomment %}
+
+  <div class="grid-row">
+    <div class="column-one-whole heading">
+      <h1 class="heading-large">
+        <span class="heading-secondary">Find your marketplace</span>
+        {{ markets_list.count }} option{{markets_list|pluralize}} found
+      </h1>
+    </div>
+  </div>
+
+  <div class="grid-row">
+
+      {% if markets_list %}
+      <ul class="list list-market">
+        {% for market in markets_list %}
+          <li class="list-market--item cf">
+            <div class="column-three-fifths">
+              <div class="push--right">
+                <div class="cf">
+                  <div class="column-one-quarter hard--left">
+                    <img src="{{ market.logo.base64_logo }}" class="image-full">
+                  </div>
+                  <div class="column-three-quarters">
+                    <div class="push--left">
+                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                      <ul>
+                        <li class="list-market--info">Region: {{ market|regions }}</li>
+                        <li class="list-market--info">Country: {{ market.country|safe }}</li>
+                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
+              </div>
+            </div>
+            <div class="column-two-fifths background--grey">
+              <ul class="soft">
+                <li class="list list-market--extra">
+
+                  <h4 class="font-xxsmall">Website traffic</h4>
+                  <p class="flush--bottom">{{ market.web_traffic_to_site|safe }}</p>
+                  <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure|safe }}</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service|safe }}</p>
+                </li>
+                <li class="list list-market--extra">
+                  <p class="font-xxsmall flush--bottom flush--top">Application process: Easy</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No market options are available.</p>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock content %}
