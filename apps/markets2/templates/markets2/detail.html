@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% load static utils %}
+
+{% block content %}
+
+  <div class='grid-row'>
+    <h1 class='heading-xlarge column-three-quarters'>{{ market.name }}</h1>
+    <p class='column-one-quarter'>Last updated: {{ market.last_modified }}</p>
+  </div>
+
+  <div class='grid-row detail-intro'>
+    <div class='column-one-half'>
+      <img src='{{ market.logo.base64_logo }}' width='100' height='100' alt=''>
+      <dl>
+        <dt>Region:</dt>
+        <dd>{{market|regions}}</dd>
+        <dt>Country:</dt>
+        <dd>{{market.country|safe}}</dd>
+        <dt>Countries served:</dt>
+        <dd>{{market|countries}}</dd>
+        <dt>Website:</dt>
+        <dd><a href='{{market.web_address}}'>{{market.web_address}}</a></dd>
+      </dl>
+      <p>{{ market.description|safe }}</p>
+    </div>
+    <div class='column-one-half'>
+      <div class='detail-ukti-terms'>
+        <ul class="soft">
+          <li class="list list-market--extra">
+            <h4 class="font-xxsmall">Website traffic</h4>
+            <p class="flush--bottom">{{ market.web_traffic_to_site }}</p>
+            <p class="font-xxsmall flush--bottom flush--top">unique visitors / month</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">{{ market.logistics_structure|safe }}</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">{{ market.buyers_customer_service|safe }}</p>
+          </li>
+          <li class="list list-market--extra">
+            <p class="font-xxsmall flush--bottom flush--top">{{ market.platform_signup|safe }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Site</h3>
+    <dl>
+      <li>
+        <dt>Site traffic</dt>
+        <dd>{{ market.web_traffic_to_site|safe }}</dd>
+      </li>
+      <li>
+        <dt>Revenue</dt>
+        <dd>{{ market.revenue|safe }}</dd>
+      </li>
+      <li>
+        <dt>Parent company</dt>
+        <dd>{{ market.parent_company_name|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Products</h3>
+    <dl>
+      <li>
+        <dt>Positioning</dt>
+        <dd>{{ market.platform_target_market|safe }}</dd>
+      </li>
+      <li>
+        <dt>Listing languages</dt>
+        <dd>{{ market.listing_languages|safe }}</dd>
+      </li>
+      <li>
+        <dt>Product feedback system</dt>
+        <dd>{{ market.product_feedback_system|safe }}</dd>
+      </li>
+      <hr>
+      <li class='wider'>
+        <dt>Customer Service &amp; Returns</dt>
+        <dd>{{ market.buyers_customer_service|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Logistics &amp; fulfillment</h3>
+    <dl>
+      <li>
+        <dt>Logistics support</dt>
+        <dd>{{ market.logistics_structure|safe }}</dd>
+      </li>
+      <li class='wider'>
+        <dt>Options</dt>
+        <dd>{{ market.logistics_options|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Application process and payment terms</h3>
+    <dl>
+      <li>
+        <dt>Seller application process</dt>
+        <dd>{{ market.seller_application_process|safe }}</dd>
+      </li>
+      <li class='wider'>
+        <dt>Payment terms</dt>
+        <dd>{{ market.payment_terms|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Fees &amp; Pricing structure</h3>
+    <dl>
+      <li>
+        <dt>Subscription fee</dt>
+        <dd>{{ market.subscription_fees|safe }}</dd>
+        <dt>Additional operating fees</dt>
+        <dd>{{ market.additional_fees|safe }}</dd>
+      </li>
+      <li class='wider'>
+        <dt>Registration fee</dt>
+        <dd>{{ market.registration_fees|safe }}</dd>
+      </li>
+      <li class='ukti-terms'>
+        <dt>UKTI Terms</dt>
+        <dd>{{ market.additional_fees|safe }}</dd>
+      </li>
+      <li>
+        <dt>Referral fees</dt>
+        <dd>{{ market.referral_fees|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Merchandising</h3>
+    <dl>
+      <li>
+        <dt>Shopfront customization</dt>
+        <dd>{{ market.customization|safe }}</dd>
+      </li>
+      <li>
+        <dt>Shop analytics</dt>
+        <dd>{{ market.shop_analytics|safe }}</dd>
+      </li>
+      <li>
+        <dt>Social media integration</dt>
+        <dd>{{ market.social_media_integration|safe }}</dd>
+      </li>
+      <li>
+        <dt>Product promotion options</dt>
+        <dd>{{ market.product_promotion_options|safe }}</dd>
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Legal requirements</h3>
+    <dl>
+      <li>
+        <dt>Prohibited items</dt>
+        <dd>{{ market.prohibited_items|safe }}</dd>
+      </li>
+      <li class='wider'>
+        <dt>Local laws</dt>
+        <dd>{{ market.local_laws|safe }}</dd> 
+      </li>
+    </dl>
+  </div>
+
+  <div class='grid-row detail-row'>
+    <h3>Things you need to consider</h3>
+    <p>{{ market.things_to_consider|safe }}</p>
+  </div>
+
+  <div class='grid-row next-steps'>
+    <h2>Next steps</h2>
+    <p>To register interest and start the process please fill out this form.</p>
+    <a href='#TODO' class='button'>Register your interest</a>
+  </div>
+{% endblock content %}
