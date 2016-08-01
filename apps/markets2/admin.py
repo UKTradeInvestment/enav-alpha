@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+
+from .models import Market, Region, Country
+
+admin.site.register(Market)
+admin.site.register(Region)
+admin.site.register(Country)
