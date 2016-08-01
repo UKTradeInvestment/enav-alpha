@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 from .models import Market
-from .forms import MarketFilterForm, RegionChoiceForm, ProductChoiceForm
+from .forms import MarketFilterForm
 
 
 class MarketListView(ListView):
@@ -32,16 +32,5 @@ class MarketDetailView(DetailView):
     template_name = 'markets3/detail.html'
 
 
-class RegionChoiceView(FormView):
-    form_class = RegionChoiceForm
-    template_name = 'markets3/region-choice.html'
-
-
-class ProductChoiceView(FormView):
-    form_class = ProductChoiceForm
-    template_name = 'markets3/product-choice.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(ProductChoiceView, self).get_context_data(**kwargs)
-        context['regions'] = self.request.GET.getlist('region')
-        return context
+class FilteringView(TemplateView):
+    template_name = 'markets3/filtering.html'

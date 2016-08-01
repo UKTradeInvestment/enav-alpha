@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% block header %}
+  <div class="header-wrapper">
+    <div class="header-global">
+      <select id="solution" class="float--right">
+        <option value="1" {% if solution == 1 %}selected="selected"{% endif %}>Solution 1</option>
+        <option value="2" {% if solution == 2 %}selected="selected"{% endif %}>Solution 2</option>
+        <option value="3" {% if solution == 3 %}selected="selected"{% endif %}>Solution 3</option>
+      </select>
+    </div>
+  </div>
+{% endblock header %}
+
 {% block content %}
   
   <h1 class='heading-xlarge'>

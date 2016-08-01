@@ -35,17 +35,3 @@ class LogoAdminForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         self.instance._encoded_data = getattr(self, '_encoded_file_data')
         return super(LogoAdminForm, self).save(*args, **kwargs)
-
-
-class RegionChoiceForm(ModelFilterForm):
-    class Meta:
-        model = Market
-        fields = []
-        query_fields = [('countries_served__region__name', QueryMultipleCheckboxField)]
-
-
-class ProductChoiceForm(ModelFilterForm):
-    class Meta:
-        model = Market
-        fields = ['product_categories', ]
-        query_fields = [('product_categories', QueryMultipleCheckboxField)]
