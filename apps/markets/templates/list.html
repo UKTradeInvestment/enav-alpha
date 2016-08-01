@@ -3,12 +3,6 @@
 {% load static utils %}
 
 {% block content %}
-  {% comment %}
-  <form method="get" action="{% url 'markets:list' %}">
-    {{ form.as_p }}
-    <input type='submit' value='submit'/>
-  </form>
-  {% endcomment %}
 
   <div class="grid-row">
     <div class="column-one-whole heading">
@@ -19,10 +13,36 @@
     </div>
   </div>
 
+
+
   <div class="grid-row">
+    <div class="filters column-one-third">
+      <div class="filters-container">
+        <div class="filters-section filters-header">
+          <h3 class="heading-small flush--ends">Filters</h3>
+        </div>
+        <form method="get" action="{% url 'markets:list' %}">
+          {% for field in form %}
+          <div class="cf filters-section filters-options">
+            <h4 class="heading-small flush--ends hard--bottom">{{field.name}}</h4>
+            {% for radio in field %}
+            <label for="{{ radio.id_for_label }}" class='block-label'>
+              {{ radio.choice_label }}
+              <span class="radio">{{ radio.tag }}</span>
+            </label>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          <div class="cf filters-section filters-buttons-group">
+            <button class="button">Filter</button>
+            <button class="button button-clear" type="reset" value="Reset">Clear All</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
       {% if markets_list %}
-      <ul class="list list-market">
+      <ul class="list list-market column-two-thirds">
         {% for market in markets_list %}
           <li class="list-market--item cf">
             <div class="column-three-fifths">
