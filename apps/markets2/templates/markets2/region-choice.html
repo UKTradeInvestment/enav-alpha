@@ -5,7 +5,7 @@
   <p>Which region do you have in mind to export to?</p>
 
   <p>Please select all that apply</p>
-  <form method="get" action="{% url 'product-choice' %}">
+  <form method="get" action="{% url 'markets2:list' %}">
     <div class='cf push--bottom'>
       {% for field in form %}
         {% for radio in field %}
@@ -17,6 +17,7 @@
       {% endfor %}
     </div>
     <button class='button' type='submit'>Next step</button>
-    <a class='button skip' href='{% url 'product-choice' %}' style='background-color: #6F777B'>Skip this step</a>
+    MARKETS 2
+    <a class='button skip' href='{% url 'markets2:list' %}' style='background-color: #6F777B'>Skip this step</a>
   </form>
 {% endblock content %}

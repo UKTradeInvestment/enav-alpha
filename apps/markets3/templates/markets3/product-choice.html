@@ -6,7 +6,7 @@
   <p>Which products categories do you have in mind to export?</p>
 
   <p>Please select all that apply</p>
-  <form method="get" action="{% url 'markets:list' %}">
+  <form method="get" action="{% url 'markets3:list' %}">
     <div class='cf push--bottom grid-row'>
       {% for region in regions %}
         <input type='hidden' name='region' value='{{region}}'>
@@ -23,7 +23,7 @@
       {% endfor %}
     </div>
     <button class='button' type='submit'>Next step</button>
-    <a class='button skip' href='{% url 'markets:list' %}?{{ request.GET.urlencode }}' style='background-color: #6F777B'>Skip this step</a>
+    <a class='button skip' href='{% url 'markets3:list' %}?{{ request.GET.urlencode }}' style='background-color: #6F777B'>Skip this step</a>
   </form>
 
   <div class='notice'>
