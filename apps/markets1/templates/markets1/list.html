@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static utils %}
+
+{% block content %}
+  <div class="grid-row">
+      {% if markets_list %}
+      <ul class="list list-market">
+        {% for market in markets_list %}
+          <li class="list-market--item cf">
+            <div class="column-three-fifths">
+              <div class="push--right">
+                <div class="cf">
+                  <div class="column-three-quarters">
+                    <div class="push--left">
+                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                      <ul>
+                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No market options are available.</p>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock content %}

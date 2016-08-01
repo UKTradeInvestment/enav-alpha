@@ -97,3 +97,11 @@ Load 3 sample markets with product categories.
     python manage.py loaddata ./apps/markets/fixtures/sample_data.json
 ```
 
+Load Solution 1 sample data
+
+```shell
+    workon enav-alpha
+    python manage.py loaddata ./apps/markets1/fixtures/sample_data.json
+```
+
+
