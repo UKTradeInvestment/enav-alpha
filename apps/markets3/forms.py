@@ -1,5 +1,5 @@
 from django import forms
-from apps.core.forms import ModelFilterForm, QueryMultipleCheckboxField
+from apps.core.forms import ModelFilterForm, QueryMultipleCheckboxField, QueryChoiceField, QueryMultipleChoiceField
 from .models import Market, Logo, Region
 
 
@@ -12,6 +12,19 @@ class MarketFilterForm(ModelFilterForm):
             ('name', QueryMultipleCheckboxField),
             ('countries_served__region__name', QueryMultipleCheckboxField),
             ('countries_served__name', QueryMultipleCheckboxField),
+            ('platform_type', QueryMultipleCheckboxField),
+        ]
+
+
+class FilteringForm(ModelFilterForm):
+
+    class Meta:
+        model = Market
+        fields = []
+        query_fields = [
+            ('platform_type', QueryMultipleCheckboxField),
+            ('countries_served__name', QueryChoiceField),
+            ('product_categories__name', QueryMultipleChoiceField),
         ]
 
 
