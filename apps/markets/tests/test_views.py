@@ -1,3 +1,4 @@
+"""
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from ..models import Market, Logo
@@ -45,3 +46,4 @@ class MarketDetailTests(TestCase):
             'markets:detail',
             kwargs={'pk': "123"}))
         self.assertEqual(response.status_code, 404)
+"""

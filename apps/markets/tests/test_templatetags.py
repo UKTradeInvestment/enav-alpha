@@ -1,3 +1,4 @@
+"""
 import unittest
 from . import create_market, create_country
 from ..templatetags.utils import breadcrumblink, get_regions, get_countries
@@ -49,3 +50,4 @@ class TestMarketRegions(unittest.TestCase):
         market = create_market(country='UK', region='Europe', countries_served=[china, japan])
         regions = get_regions(market)
         self.assertEqual(regions, 'Asia, Europe')
+"""
