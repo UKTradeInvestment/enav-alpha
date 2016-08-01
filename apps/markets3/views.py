@@ -1,4 +1,7 @@
-from django.views.generic import ListView, DetailView, FormView, TemplateView
+import json
+
+from django.http import JsonResponse
+from django.views.generic import ListView, DetailView, FormView
 from .models import Market
 from .forms import MarketFilterForm
 
@@ -27,10 +30,24 @@ class MarketListView(ListView):
         return Market.objects.filter(**_filter).distinct()
 
 
+class MarketCountView(MarketListView):
+    def render_to_response(self, context, **response_kwargs):
+        return JsonResponse(
+            {'count': self.object_list.count()},
+            **response_kwargs
+        )
+
+
 class MarketDetailView(DetailView):
     model = Market
     template_name = 'markets3/detail.html'
 
 
-class FilteringView(TemplateView):
+class FilteringView(FormView):
+    form_class = MarketFilterForm
     template_name = 'markets3/filtering.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['results_count'] = Market.objects.count()
+        return context
