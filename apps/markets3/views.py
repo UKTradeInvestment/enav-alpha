@@ -1,9 +1,13 @@
 import json
 
 from django.http import JsonResponse
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, TemplateView
 from .models import Market
 from .forms import MarketFilterForm, FilteringForm
+
+
+class HomepageView(TemplateView):
+    template_name = 'markets3/homepage.html'
 
 
 class MarketListView(ListView):
