@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.markets2',
     'apps.markets3',
     'apps.markets',
+    'apps.contact',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,3 +148,9 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+FEEDBACK_TO = os.environ.get('FEEDBACK_TO')
+FEEDBACK_FROM = os.environ.get('FEEDBACK_FROM')
+SMTP_USER = os.environ.get('AWS_SMTP_USER')
+SMTP_PWD = os.environ.get('AWS_SMTP_PASSWORD')
+SMTP_SERVER = os.environ.get('AWS_SMTP_SERVER')
