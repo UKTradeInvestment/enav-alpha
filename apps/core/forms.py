@@ -55,6 +55,16 @@ class QueryMultipleCheckboxField(QueryMultipleChoiceField):
         return super().__init__(widget=forms.CheckboxSelectMultiple(), *args, **kwargs)
 
 
+class QueryRadioField(QueryChoiceField):
+    """
+    A convinience model identical to the QueryChoiceField, but that uses a default radio select as it's
+    widget, rather than a multi-select box
+    """
+
+    def __init__(self, *args, **kwargs):
+        return super().__init__(widget=forms.RadioSelect(), *args, **kwargs)
+
+
 class ModelFilterForm(forms.ModelForm):
     """
     A Model form that can have a specified list of query_fields, and it will automatically convert these into

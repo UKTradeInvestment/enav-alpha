@@ -23,10 +23,14 @@ class MarketListView(ListView):
         _filter = {}
 
         for key, items in self.request.GET.lists():
+            stripped_items = [x for x in items if x != '*']
+            if not stripped_items:
+                continue
+
             attr = key.split('__')[0]
             try:
                 Market._meta.get_field(attr)
-                _filter["{}__in".format(key)] = items
+                _filter["{}__in".format(key)] = stripped_items
             except:
                 # Ignore GET params that aren't on the model
                 pass
@@ -48,11 +52,10 @@ class MarketDetailView(DetailView):
 
 
 class FilteringView(FormView):
-    form_class = MarketFilterForm
+    form_class = FilteringForm
     template_name = 'markets3/filtering.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['results_count'] = Market.objects.count()
-        context['form'] = FilteringForm(self.request.GET)
         return context
