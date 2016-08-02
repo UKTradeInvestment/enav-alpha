@@ -1,37 +1,13 @@
 {% extends "base.html" %}
 
-{% block header %}
-  <div class="header-wrapper">
-    <div class="header-global">
-      <select id="solution" class="float--right">
-        <option value="1" {% if solution == 1 %}selected="selected"{% endif %}>Solution 1</option>
-        <option value="2" {% if solution == 2 %}selected="selected"{% endif %}>Solution 2</option>
-        <option value="3" {% if solution == 3 %}selected="selected"{% endif %}>Solution 3</option>
-      </select>
-    </div>
-  </div>
-{% endblock header %}
-
 {% block content %}
   
   <h1 class='heading-xlarge'>
-    Find international e-marketplaces for your business to export
+    Demo Landing Page
   </h1>
 
-  <p>Find out:</p>
-  <ul class="list list-bullet">
-    <li>if there is a suitable e-commerce platform for your product overseas</li>
-    <li>more information about e-marketplaces and how to get onto them</li>
-  </ul>
-
-  <h2 class='heading-medium'>Before you start</h2>
-  <p>You'll need to know:</p>
-
-  <ul class="list list-bullet">
-    <li>what products you want to sell online</li>
-    <li>where in the world you'd like to sell them</li>
-  </ul>
-
-  <a class='button button-start' href='{{ solution }}'>Start now</a>
+  <p><a class='button button-start' href='/1'>Solution 1</a></p>
+  <p><a class='button button-start' href='/2'>Solution 2</a></p>
+  <p><a class='button button-start' href='/3'>Solution 3</a></p>
 
 {% endblock content %}

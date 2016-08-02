@@ -1,6 +1,10 @@
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, TemplateView, FormView
 from .models import Market
 from .forms import RegionChoiceForm, MarketFilterForm
+
+
+class HomepageView(TemplateView):
+    template_name = 'markets2/homepage.html'
 
 
 class MarketListView(ListView):
