@@ -47,3 +47,36 @@ ul {
     padding: 15px;
   }
 }
+
+body.sol2 ul.list-market {
+  h2 {
+    margin: 0;
+  }
+
+  dl {
+    clear: left;
+    margin-bottom: 1em;
+  }
+  dl:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  dt {
+    float: left;
+    clear: left;
+  }
+  dt:after {
+    content: ': ';
+    padding-right: 0.5em;
+  }
+
+  dl.details dt {
+    font-weight: bold;
+  }
+
+  .background--grey {
+    margin-bottom: 1em;
+  }
+}

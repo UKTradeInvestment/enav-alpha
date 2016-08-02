@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-
 {% load static utils %}
+
+{% block body_class %}sol2{% endblock %}
 
 {% block content %}
   {% comment %}
@@ -25,27 +26,32 @@
       <ul class="list list-market">
         {% for market in markets_list %}
           <li class="list-market--item cf">
-            <div class="column-three-fifths">
-              <div class="push--right">
-                <div class="cf">
-                  <div class="column-one-quarter hard--left">
-                    <img src="{{ market.logo.base64_logo }}" class="image-full">
-                  </div>
-                  <div class="column-three-quarters">
-                    <div class="push--left">
-                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
-                      <ul>
-                        <li class="list-market--info">Region: {{ market|regions }}</li>
-                        <li class="list-market--info">Country: {{ market.country|safe }}</li>
-                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
-              </div>
+            <div class='column-half'>
+              <h2 class='heading-medium'>{{market.name}}</h2>
+              <dl>
+                <dt>Region</dt>
+                <dd>{{market.region}}</dd>
+                <dt>Website</dt>
+                <dd>{{market.web_address|safe}}</dd>
+              </dl>
+              <dl class='details'>
+                <dt>Platform sales model</dt>
+                <dd>{{market.misc1|safe}}</dd>
+                <dt>Customer service channels</dt>
+                <dd>{{market.misc2|safe}}</dd>
+                <dt>Local incorporation to join</dt>
+                <dd>{{market.misc3|safe}}</dd>
+                <dt>Payment time frames</dt>
+                <dd>{{market.misc4|safe}}</dd>
+                <dt>Fixed exchange fees</dt>
+                <dd>{{market.misc5|safe}}</dd>
+                <dt>Registration fee</dt>
+                <dd>{{market.misc6|safe}}</dd>
+                <dt>Commission on sales</dt>
+                <dd>{{market.misc7|safe}}</dd>
+              </dl>
             </div>
-            <div class="column-two-fifths background--grey">
+            <div class="column-half background--grey">
               <ul class="soft">
                 <li class="list list-market--extra">
 
@@ -63,6 +69,14 @@
                   <p class="font-xxsmall flush--bottom flush--top">{{ market.platform_signup|safe }}</p>
                 </li>
               </ul>
+            </div>
+            <div class='column-half'>
+              <dl class='details'>
+                <dt>Logistics model</dt>
+                <dd>{{market.misc8|safe}}</dd>
+                <dt>Logistic support</dt>
+                <dd>{{market.misc9|safe}}</dd>
+              </dl>
             </div>
           </li>
         {% endfor %}
