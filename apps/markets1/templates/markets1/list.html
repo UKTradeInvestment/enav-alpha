@@ -3,31 +3,39 @@
 {% load static utils %}
 
 {% block content %}
+  <ul>
+    <li><a href="{% url 'markets1:markets' %}">Available markets</a></li>
+    {% for article in articles_list %}
+      <li><a href="{% url 'markets1:article' article.pk %}">{{ article }}</a></li>
+    {% endfor %}
+  </ul>
+
   <div class="grid-row">
       {% if markets_list %}
-      <ul class="list list-market">
-        {% for market in markets_list %}
-          <li class="list-market--item cf">
-            <div class="column-three-fifths">
-              <div class="push--right">
-                <div class="cf">
-                  <div class="column-three-quarters">
-                    <div class="push--left">
-                      <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
-                      <ul>
-                        <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
-                      </ul>
+        <ul class="list list-market">
+          {% for market in markets_list %}
+            <li class="list-market--item cf">
+              <div class="column-three-fifths">
+                <div class="push--right">
+                  <div class="cf">
+                    <div class="column-three-quarters">
+                      <div class="push--left">
+                        <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
+                        <ul>
+                          <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
                 </div>
-                <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
               </div>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p>No market options are available.</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% elif article %}
+        <h1>{{ article.title }}</h1>
+        {{ article.content|safe }}
       {% endif %}
     </div>
   </div>

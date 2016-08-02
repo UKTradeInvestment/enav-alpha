@@ -24,11 +24,7 @@ class MarketModelTests(TestCase):
 
 class MarketListTests(TestCase):
 
-    def test_list_no_markets(self):
-        response = self.client.get(reverse('markets1:list'))
-        self.assertContains(response, 'No market options are available', status_code=200)
-
     def test_list_markets(self):
         market = create_market()
-        response = self.client.get(reverse('markets1:list'))
+        response = self.client.get(reverse('markets1:markets'))
         self.assertContains(response, market.name, status_code=200)
