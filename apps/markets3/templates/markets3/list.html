@@ -35,7 +35,6 @@
                     <div class="push--left">
                       <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
                       <ul>
-                        <li class="list-market--info">Region: {{ market|regions }}</li>
                         <li class="list-market--info">Country: {{ market.country|safe }}</li>
                         <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
                       </ul>
@@ -43,7 +42,9 @@
                   </div>
                 </div>
                 <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
-                <a href="{% url 'markets3:detail' market.id %}">More details</a>
+                <a class="button button-blue push-half--right" href="{% url 'markets3:detail' market.id %}">More details</a>
+                <a class="button button-transparent" href="{% url 'markets3:detail' market.id %}">Shortlist</a>
+
               </div>
             </div>
             <div class="column-two-fifths background--grey">
