@@ -3,7 +3,7 @@ import json
 from django.http import JsonResponse
 from django.views.generic import ListView, DetailView, FormView
 from .models import Market
-from .forms import MarketFilterForm
+from .forms import MarketFilterForm, FilteringForm
 
 
 class MarketListView(ListView):
@@ -50,4 +50,5 @@ class FilteringView(FormView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['results_count'] = Market.objects.count()
+        context['form'] = FilteringForm(self.request.GET)
         return context

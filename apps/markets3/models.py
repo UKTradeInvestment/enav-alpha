@@ -157,6 +157,8 @@ class Market(models.Model):
     platform_signup = RichTextField(null=True, blank=True)
     # General things to consider
     things_to_consider = RichTextField(null=True, blank=True)
+    # Platform type eg shopfront or catalogue
+    platform_type = models.CharField(max_length=255, null=True, blank=True)
 
     # Misc fields
     misc1 = RichTextField(null=True, blank=True)
