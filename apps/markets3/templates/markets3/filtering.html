@@ -4,12 +4,13 @@
 
   <h1 class="heading-large">Find international e-marketplaces for your business to export</h1>
 
-  <form method="get" action="{% url 'markets3:list' %}">
+  <form id='results-form' method="get" action="{% url 'markets3:list' %}" data-count-action='{% url "markets3:count" %}'>
     <div class='cf push--bottom grid-row'>
-      Filter magic here
+      {{form.as_p}}
     </div>
     <button class='button' type='submit'>Next step</button>
     <a class='button skip' href='{% url 'markets3:list' %}?{{ request.GET.urlencode }}' style='background-color: #6F777B'>Skip this step</a>
   </form>
+  <p id='results-count'>Results found: <em>{{results_count}}</em></p>
 
 {% endblock content %}
