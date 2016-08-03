@@ -70,6 +70,33 @@ gulp.task('javascripts', () => gulp
   .pipe(gulp.dest(paths.dist + 'javascripts/'))
 );
 
+// don't uglify the JS
+gulp.task('debugjs', () => gulp
+  .src([
+    paths.toolkit + 'javascripts/govuk/modules.js',
+    paths.toolkit + 'javascripts/govuk/selection-buttons.js',
+    paths.src + 'javascripts/detailsPolyfill.js',
+    paths.src + 'javascripts/apiKey.js',
+    paths.src + 'javascripts/autofocus.js',
+    paths.src + 'javascripts/highlightTags.js',
+    paths.src + 'javascripts/fileUpload.js',
+    paths.src + 'javascripts/updateContent.js',
+    paths.src + 'javascripts/expandCollapse.js',
+    paths.src + 'javascripts/**/*.js',
+
+  ])
+  .pipe(plugins.babel({
+    presets: ['es2015']
+  }))
+  .pipe(plugins.addSrc.prepend([
+    paths.npm + 'jquery/dist/jquery.min.js',
+    paths.npm + 'query-command-supported/dist/queryCommandSupported.min.js',
+    paths.npm + 'diff-dom/diffDOM.js'
+  ]))
+  .pipe(plugins.concat('all.js'))
+  .pipe(gulp.dest(paths.dist + 'javascripts/'))
+);
+
 gulp.task('sass', () => gulp
   .src(paths.src + 'stylesheets/main*.scss')
   .pipe(plugins.sass({
@@ -143,6 +170,19 @@ gulp.task('default',
     'images'
   ]
 );
+
+gulp.task('debug',
+  [
+    // 'copy:govuk_template:template',
+    'copy:govuk_template:images',
+    'copy:govuk_template:css',
+    'copy:govuk_template:js',
+    'debugjs',
+    'sass',
+    'images'
+  ]
+);
+
 
 // Optional: recompile on changes
 gulp.task('watch',
