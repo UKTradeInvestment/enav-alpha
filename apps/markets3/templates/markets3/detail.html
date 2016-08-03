@@ -6,7 +6,7 @@
 
   <div class='grid-row'>
     <h1 class='heading-xlarge column-three-quarters'>{{ market.name }}</h1>
-    <p class='column-one-quarter'>Last updated: {{ market.last_modified }}</p>
+    <p class='column-one-quarter heading-last-updated font-xxsmall'>Last updated: {{ market.last_modified|date:"d/m/Y" }}</p>
   </div>
 
   <div class='grid-row detail-intro'>
