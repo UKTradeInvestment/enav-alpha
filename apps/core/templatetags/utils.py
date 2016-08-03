@@ -28,7 +28,7 @@ def get_regions(market):
 
     region_list = []
     for country in market.countries_served.all():
-        if country not in region_list:
+        if country.region not in region_list:
             region_list.append(str(country.region))
 
     region_list.sort(key=lambda region: region)
