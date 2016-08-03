@@ -17,17 +17,41 @@
   &-transparent {
     border: 1px solid $link-colour;
 
-    &:link {
-      background-color: transparent;
-      color: $link-colour;
-    }
+    &:link,
     &:visited {
       background-color: transparent;
       color: $link-colour;
     }
+
     &:hover {
       background-color: transparent;
       color: $link-hover-colour;
+    }
+  }
+
+  &-white {
+    border: 1px solid $white;
+    background-color: $white;
+    color: $link-colour;
+
+    &:link,
+    &:visited,
+    &:hover {
+      background-color: $white;
+      color: $link-colour;
+    }
+  }
+
+  &-grey {
+    border: 1px solid $grey-3;
+    background-color: $grey-3;
+    color: $link-colour;
+
+    &:link,
+    &:visited,
+    &:hover {
+      background-color: $white;
+      color: $link-colour;
     }
   }
 
