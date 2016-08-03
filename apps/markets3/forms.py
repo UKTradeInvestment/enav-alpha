@@ -6,19 +6,6 @@ from apps.core.forms import (
 from .models import Market, Logo, Region
 
 
-class MarketFilterForm(ModelFilterForm):
-
-    class Meta:
-        model = Market
-        fields = ['name', ]
-        query_fields = [
-            ('name', QueryMultipleCheckboxField),
-            ('countries_served__region__name', QueryMultipleCheckboxField),
-            ('countries_served__name', QueryMultipleCheckboxField),
-            ('platform_type', QueryMultipleCheckboxField),
-        ]
-
-
 class FilteringForm(ModelFilterForm):
 
     class Meta:
@@ -31,6 +18,22 @@ class FilteringForm(ModelFilterForm):
             ('local_customer_service', QueryRadioField),
             ('countries_served__name', QueryChoiceField),
             ('product_categories__name', QueryMultipleChoiceField),
+        ]
+
+
+class MarketFilterForm(FilteringForm):
+
+    class Meta:
+        model = Market
+        fields = ['name', ]
+        query_fields = [
+            ('platform_type', QueryMultipleCheckboxField),
+            ('product_type', QueryChoiceField),
+            ('logistics_structure', QueryMultipleCheckboxField),
+            ('local_customer_service', QueryRadioField),
+            ('countries_served__name', QueryMultipleCheckboxField),
+            ('product_categories__name', QueryMultipleCheckboxField),
+            ('countries_served__region__name', QueryMultipleCheckboxField),
         ]
 
 

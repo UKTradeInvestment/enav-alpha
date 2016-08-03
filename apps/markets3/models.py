@@ -94,6 +94,7 @@ class Market(models.Model):
     product_categories = models.ManyToManyField(ProductCategory)
     # Do they provide local customer services
     local_customer_service = models.CharField(choices=BOOLEAN, max_length=1, blank=0, default=False)
+    local_customer_service_notes = models.CharField(max_length=200, blank=True, null=True, verbose_name='notes')
     # Structure of the logistics and fulfillment for the e-marketplace.
     logistics_structure = models.CharField(choices=LOGISTICS_MODELS, max_length=1, null=True, blank=True)
     # Product type

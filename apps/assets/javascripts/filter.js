@@ -6,8 +6,10 @@
         event.preventDefault();
 
         var clickTab = $(this);
-        var selectedGroup = $(filterOptions).first().data("group", $(event.target).data("group"))[0];
-
+        filterOptions.hide();
+        var selector = '.filters-options' + '[data-field="' + $(event.target).data("group") + '"]';
+        var selectedGroup = $(selector)[0];
+        
         if (clickTab.hasClass('active')) {
             $(tabItem).removeClass('active');
             $(selectedGroup).hide();
