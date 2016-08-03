@@ -26,5 +26,5 @@ class MarketListTests(TestCase):
 
     def test_list_markets(self):
         market = create_market()
-        response = self.client.get(reverse('markets1:markets'))
+        response = self.client.get(reverse('markets1:item', args=['markets']))
         self.assertContains(response, market.name, status_code=200)

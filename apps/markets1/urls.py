@@ -4,7 +4,7 @@ from . import views
 app_name = 'markets1'
 
 urlpatterns = [
-    url(r'^$', views.ArticleView.as_view(), name='articles'),
-    url(r'^article/(?P<pk>[0-9]+)/$', views.ArticletDetailView.as_view(), name='article'),
-    url(r'^markets/$', views.MarketsView.as_view(), name='markets'),
+    url(r'^$', views.MainView.as_view(), name='home'),
+    url(r'^(?P<mode>[a-z]+)/$', views.MainView.as_view(), name='item'),
+    url(r'^(?P<mode>[a-z]+)/(?P<pk>[0-9]+)/$', views.MainView.as_view(), name='item'),
 ]
