@@ -1,3 +1,4 @@
+import base64
 from django import forms
 from apps.core.forms import ModelFilterForm, QueryMultipleCheckboxField, QueryChoiceField, QueryMultipleChoiceField
 from .models import Market, Logo, Region
