@@ -54,8 +54,8 @@ gulp.task('javascripts', () => gulp
     paths.src + 'javascripts/fileUpload.js',
     paths.src + 'javascripts/updateContent.js',
     paths.src + 'javascripts/expandCollapse.js',
-    paths.src + 'javascripts/main.js',
-    paths.src + 'javascripts/results_count.js'
+    paths.src + 'javascripts/**/*.js',
+
   ])
   .pipe(plugins.babel({
     presets: ['es2015']

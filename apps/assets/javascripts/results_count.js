@@ -4,7 +4,7 @@
             $form = $('#results-form'),
             action = $form.data('count-action');
 
-        $('input', $form).on('change', function() {
+        $('input,select', $form).on('change', function() {
             $.ajax({
                     url: action,
                     type: 'GET',

@@ -10,8 +10,14 @@ from ckeditor.fields import RichTextField
 # SAMPLE DATA
 PLATFORM_BRAND_POSITION = (
     ('0', 'Luxury'),
-    ('1', 'mid'),
-    ('2', 'discount')
+    ('1', 'Mid rage'),
+    ('2', 'Discount')
+)
+
+LOGISTICS_MODELS = (
+    ('0', 'Dropshipping'),
+    ('1', 'Warehousing'),
+    ('2', 'Other')
 )
 
 # SAMPLE DATA
@@ -20,6 +26,11 @@ LISTING_LANGUAGES = (
     ('0', 'English (eng)'),
     ('1', 'Spanish (spa)'),
     ('2', 'Chinese', ('cdo'))
+)
+
+BOOLEAN = (
+    ('0', 'No'),
+    ('1', 'Yes')
 )
 
 
@@ -81,6 +92,13 @@ class Market(models.Model):
     countries_served = models.ManyToManyField(Country)
     # Industry standard for product categories.
     product_categories = models.ManyToManyField(ProductCategory)
+    # Do they provide local customer services
+    local_customer_service = models.CharField(choices=BOOLEAN, max_length=1, blank=0, default=False)
+    # Structure of the logistics and fulfillment for the e-marketplace.
+    logistics_structure = models.CharField(choices=LOGISTICS_MODELS, max_length=1, null=True, blank=True)
+    # Product type
+    product_type = models.CharField(choices=PLATFORM_BRAND_POSITION, max_length=1, null=True, blank=True)
+
     # Uses the field product_categories, for each category provides a demand value
     product_category_demand = models.CommaSeparatedIntegerField(max_length=500, blank=True, null=True)
     # The number of buyers, sellers on a marketplace.
@@ -95,8 +113,6 @@ class Market(models.Model):
     fee_pricing_structure = RichTextField(null=True, blank=True)
     # Terms in place for sellers to receive payment from e-marketplace
     payment_terms = RichTextField(null=True, blank=True)
-    # Structure of the logistics and fulfillment for the e-marketplace.
-    logistics_structure = RichTextField(null=True, blank=True)
     # Type of support offered to sellers on the e-marketplace.
     seller_support_structure = RichTextField(null=True, blank=True)
     # Translation services offered for communication between buyers and sellers

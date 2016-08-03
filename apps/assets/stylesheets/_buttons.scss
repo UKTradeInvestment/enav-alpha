@@ -1,5 +1,28 @@
 .button {
-  &-next {
+  box-shadow: none;
+  font-weight: 900;
+
+  &-blue {
     background-color: $link-colour;
+    border: 1px solid $link-colour;
+
+    &:hover {
+      background-color: $link-hover-colour;
+    }
   }
+
+  &-transparent {
+    background-color: transparent;
+    border: 1px solid $link-colour;
+    color: $link-colour;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:link {
+      color: $link-colour;
+    }
+  }
+
 }
