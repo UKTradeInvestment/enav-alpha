@@ -3,39 +3,35 @@
 {% load static utils %}
 
 {% block content %}
-  <ul>
-    {% for link in links %}
-      <li><a href="{{ link.1 }}">{{ link.0 }}</a></li>
-    {% endfor %}
-  </ul>
 
-  <div class="grid-row">
-      {% if markets_list %}
-        <ul class="list list-market">
-          {% for market in markets_list %}
-            <li class="list-market--item cf">
-              <div class="column-three-fifths">
-                <div class="push--right">
-                  <div class="cf">
-                    <div class="column-three-quarters">
-                      <div class="push--left">
-                        <h3 class="heading-medium flush--top push--bottom">{{ market.name }}</h3>
-                        <ul>
-                          <li class="list-market--info">Website: <a href="{{ market.web_address }}">{{ market.web_address|safe }}</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="soft--top column-one-whole hard--left">{{ market.description|safe }}</p>
-                </div>
-              </div>
-            </li>
+  <h1 class="heading-large flush--top soft--bottom">Exporting Online</h1>
+    <div class="grid-row">
+      <div class="column-one-third">
+        <ul class="list list-section">
+          {% for link in links %}
+            <li><a class="list-link {% if link.1 == request.get_full_path %} active {% endif %}" href="{{ link.1 }}">{{ link.0 }}</a></li>
           {% endfor %}
         </ul>
-      {% elif article %}
-        <h1>{{ article.title }}</h1>
-        {{ article.content|safe }}
-      {% endif %}
+      </div>
+      <div class="column-two-thirds">
+        <div class="list-result">
+          {% if markets_list %}
+            <h2 class="heading-large">Online marketplaces</h2>
+            <ul class="">
+              {% for market in markets_list %}
+                <li class="push--bottom">
+                  <h6 class="font-xsmall">{{ market.name }}</h6>
+                  <a class="font-xsmall" href="{{ market.web_address }}">{{ market.web_address|safe }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% elif article %}
+            <h2 class="heading-medium flush--top">Online marketplaces</h2>
+            <h1 class="heading-small push--bottom">{{ article.title }}</h1>
+            <div class="font-xsmall">{{ article.content|safe }}</div>
+        {% endif %}
+          <h3 class="list-help heading-medium">AtoZ</h3>
+        </div>
     </div>
   </div>
 
