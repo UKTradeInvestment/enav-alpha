@@ -25,12 +25,13 @@
                 </li>
               {% endfor %}
             </ul>
+          <h3 class="list-help heading-medium">AtoZ</h3>
+
           {% elif article %}
             <h2 class="heading-medium flush--top">Online marketplaces</h2>
             <h1 class="heading-small push--bottom">{{ article.title }}</h1>
             <div class="font-xsmall">{{ article.content|safe }}</div>
-        {% endif %}
-          <h3 class="list-help heading-medium">AtoZ</h3>
+          {% endif %}
         </div>
     </div>
   </div>

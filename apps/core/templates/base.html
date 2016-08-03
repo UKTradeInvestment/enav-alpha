@@ -55,7 +55,9 @@
 
         {% block content %}{% endblock content %}
       </div>
-      <a href="{% url 'contact:feedback_submit' %}">Tell us what you think?</a>
+      <div class="section">
+        <a href="{% url 'contact:feedback_submit' %}">Tell us what you think?</a>
+      </div>
     </main>
     <footer class="group js-footer" id="footer" role="contentinfo">
       {% block footer %}
