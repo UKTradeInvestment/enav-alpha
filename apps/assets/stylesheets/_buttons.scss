@@ -6,22 +6,28 @@
     background-color: $link-colour;
     border: 1px solid $link-colour;
 
+    &:visited {
+      background-color: $link-colour;
+    }
     &:hover {
       background-color: $link-hover-colour;
     }
   }
 
   &-transparent {
-    background-color: transparent;
     border: 1px solid $link-colour;
-    color: $link-colour;
-
-    &:hover {
-      background-color: transparent;
-    }
 
     &:link {
+      background-color: transparent;
       color: $link-colour;
+    }
+    &:visited {
+      background-color: transparent;
+      color: $link-colour;
+    }
+    &:hover {
+      background-color: transparent;
+      color: $link-hover-colour;
     }
   }
 
