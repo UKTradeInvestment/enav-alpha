@@ -59,8 +59,50 @@
 
   }
 
+  &-tab--item {
+    border-right: 1px solid $white;
+    display: block;
+    padding: 30px 0;
+    text-align: center;
+
+    &:link {
+      color: $black;
+      text-decoration: none;
+    }
+
+    &.active, &:hover, &:focus  {
+      background-color: $secondary-text-colour;
+      color: $white;
+      outline: 0;
+    }
+
+  }
+
   &-section {
-    border: 1px solid red;
+    background-color: $secondary-text-colour;
+    color: $white;
+    padding: 10px 0 30px 10px;
+  }
+
+  .block-label--top {
+    background: none;
+    border: 0;
+    margin-bottom: 0;
+    padding: 17px 0 0 30px;
+
+    input {
+      left: 0;
+    }
+
+  }
+
+  
+  &-options {
+    display: none;
+
+    &.show {
+      display: block;
+    }
   }
 
 }
