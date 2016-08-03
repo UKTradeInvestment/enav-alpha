@@ -24,23 +24,18 @@
   <div class="grid-row">
     <div class="filters cf push--bottom">
       <ul class="background--grey cf">
-        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 1</a></li>
+        <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="product_categories__name">Product Categories</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 2</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 3</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 4</a></li>
         <li class="column-one-fifth"><a class="filters-tab--item" href="#" data-group="name">Filter Group 5</a></li>
       </ul>
       <form method="get" action="{% url 'markets3:list' %}">
-        {% for field in form %}
-        <div class="cf filters-section filters-options" data-field="{{field.name}}">
-          {% for radio in field %}
-          <label for="{{ radio.id_for_label }}" class='block-label block-label--top'>
-            {{ radio.choice_label }}
-            <span class="radio">{{ radio.tag }}</span>
-          </label>
-          {% endfor %}
-        </div>
-        {% endfor %}
+        {% with form.product_categories__name as field %}
+          <div class="cf filters-section filters-options" data-field="{{field.name}}">
+            {{ field }}
+          </div>
+        {% endwith %}
       </form>
     </div>
   </div>
