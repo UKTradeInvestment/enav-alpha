@@ -28,7 +28,7 @@ def get_regions(market):
 
     region_list = []
     for country in market.countries_served.all():
-        if country.region not in region_list:
+        if str(country.region) not in region_list:
             region_list.append(str(country.region))
 
     region_list.sort(key=lambda region: region)
@@ -41,6 +41,6 @@ def get_countries(market):
     Get a comma-separated list of countries the Market's serves
     """
 
-    country_list = [str(country) for country in market.countries_served.all()]
+    country_list = list(set([str(country) for country in market.countries_served.all()]))
     country_list.sort(key=lambda country: country)
-    return ", ".join(country_list)
+    return ", ".join(set(country_list))

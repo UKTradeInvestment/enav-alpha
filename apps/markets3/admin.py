@@ -30,6 +30,7 @@ class MarketAdmin(admin.ModelAdmin):
         'additional_fees',
         'referral_fees',
         'registration_fees',
+        'buyers_customer_service',
         'misc11',
         'misc12',
         'misc13',
