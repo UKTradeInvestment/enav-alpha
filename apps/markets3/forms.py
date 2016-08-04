@@ -25,12 +25,12 @@ class MarketFilterForm(FilteringForm):
 
     class Meta:
         model = Market
-        fields = ['name', ]
+        fields = []
         query_fields = [
             ('platform_type', QueryMultipleCheckboxField),
-            ('product_type', QueryChoiceField),
+            ('product_type', QueryMultipleCheckboxField),
             ('logistics_structure', QueryMultipleCheckboxField),
-            ('local_customer_service', QueryRadioField),
+            ('local_customer_service', QueryMultipleCheckboxField),
             ('countries_served__name', QueryMultipleCheckboxField),
             ('product_categories__name', QueryMultipleCheckboxField),
             ('countries_served__region__name', QueryMultipleCheckboxField),
