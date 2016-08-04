@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% block body_class %}details3{% endblock %}
 {% load static utils %}
 
 {% block content %}
@@ -196,12 +197,18 @@
     <a href='#TODO' class='button'>Register your interest</a>
   </div>
 
-  <div class="grid-row background--grey push--top soft">
-    <div class="soft-half">
-      <p class="float--left soft-half--top flush--ends push--right">Was this page helpful?</p>
-      <button class="button button-border push-half--right">Yes</button>
-      <button class="button button-border">No</button>
-    </div>
-  </div>
 {% endblock content %}
 
+{% block feedback %}{# deliberately blank #}{% endblock %}
+
+{% block footer %}
+  <div class="footer-wrapper">
+    <div class="grid-row background--grey push--top soft">
+      <div class="soft-half">
+        <p class="float--left soft-half--top flush--ends push--right">Was this page helpful?</p>
+        <button class="button button-border push-half--right">Yes</button>
+        <button class="button button-border">No</button>
+      </div>
+    </div>
+  </div>
+{% endblock footer %}
