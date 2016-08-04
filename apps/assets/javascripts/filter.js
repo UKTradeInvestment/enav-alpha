@@ -1,6 +1,7 @@
 (function ($) {
     var tabItem = $('.filters-tab--item'),
-        filterOptions = $('.filters-options');
+        filterOptions = $('.filters-options'),
+        applyFilters = $('#apply_filters');
 
     tabItem.click(function (event) {
         event.preventDefault();
@@ -18,6 +19,10 @@
             clickTab.addClass('active');
             $(selectedGroup).show();
         }
+    });
 
+    applyFilters.click(function(event) {
+        var data = $('form').serialize();
+        window.location = '?' + data;
     });
 })(jQuery);
