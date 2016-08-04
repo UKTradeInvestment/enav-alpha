@@ -70,14 +70,14 @@
                 </li>
               </ul>
             </div>
-            <div class='column-half'>
+            <div class='column-half hard--left'>
               <dl class='details'>
                 <dt>Logistics model</dt>
                 <dd>{% with description=market.misc8|safe %}{{description|default:'&nbsp;'}}{% endwith %}</dd>
                 <dt>Logistic support</dt><i class="icon icon-information"></i>
                 <dd>{{market.misc9|safe}}</dd>
               </dl>
-              <a href="">Things you may need to consider</a>
+              <a href="#" class="icon-next">Things you may need to consider</a>
             </div>
           </li>
         {% endfor %}
