@@ -177,6 +177,8 @@ class Market(models.Model):
     # Platform type eg shopfront or catalogue
     platform_type = models.CharField(max_length=255, null=True, blank=True)
 
+    web_traffic = models.CharField(max_length=30, null=True, blank=True)
+
     # Misc fields
     misc1 = RichTextField(null=True, blank=True, help_text='')
     misc2 = RichTextField(null=True, blank=True, help_text='')
