@@ -1,6 +1,7 @@
 (function ($) {
     var tabItem = $('.filters-tab--item'),
         filterOptions = $('.filters-options'),
+        closeButton = $('.button-close'),
         applyFilters = $('#apply_filters');
 
     tabItem.click(function (event) {
@@ -21,8 +22,15 @@
         }
     });
 
+    closeButton.click(function (event) {
+        event.preventDefault();
+        $(tabItem).removeClass('active');
+        $(filterOptions ).hide();
+    });
+
     applyFilters.click(function(event) {
         var data = $('form').serialize();
         window.location = '?' + data;
     });
+
 })(jQuery);
