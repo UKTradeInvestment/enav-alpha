@@ -15,8 +15,6 @@
       <dl>
         <dt>Region:</dt>
         <dd>{{market|regions}}</dd>
-        <dt>Country:</dt>
-        <dd>{{market.country|safe}}</dd>
         <dt>Countries served:</dt>
         <dd>{{market|countries}}</dd>
         <dt>Website:</dt>
@@ -54,12 +52,12 @@
         <dd>{{ market.web_traffic_to_site|safe }}</dd>
       </li>
       <li>
-        <dt>Revenue</dt>
-        <dd>{{ market.revenue|safe }}</dd>
+        <dt>Platform type</dt>
+        <dd>{{ market.platform_type }}</dd>
       </li>
       <li>
-        <dt>Parent company</dt>
-        <dd>{{ market.parent_company_name|safe }}</dd>
+        <dt>Demographic profile</dt>
+        <dd>{{ market.misc14|safe }}</dd>
       </li>
     </dl>
   </div>
@@ -68,49 +66,81 @@
     <h3>Products</h3>
     <dl>
       <li>
+        <dt>Product categories</dt>
+        <dd>{% for category in market.product_categories.all %}{{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>
+      </li>
+      <li>
         <dt>Positioning</dt>
-        <dd>{{ market.platform_target_market|safe }}</dd>
+        <dd>{{ market.get_product_type_display }}</dd>
       </li>
       <li>
-        <dt>Listing languages</dt>
-        <dd>{{ market.listing_languages|safe }}</dd>
-      </li>
-      <li>
-        <dt>Product feedback system</dt>
-        <dd>{{ market.product_feedback_system|safe }}</dd>
+        <dt>Product upload process</dt>
+        <dd>{{ market.misc15|safe }}</dd>
       </li>
       <hr>
       <li class='wider'>
         <dt>Customer Service &amp; Returns</dt>
         <dd>{{ market.buyers_customer_service|safe }}</dd>
       </li>
+      <li>
+        <dt>Customer Support</dt>
+        <dd>{{ market.misc16|safe }}</dd>
+      </li>
+      <li>
+        <dt>Local return address</dt>
+        <dd>{{ market.misc17|safe }}</dd>
+      </li>
+      <li>
+        <dt>Return rates</dt>
+        <dd>{{ market.misc18|safe }}</dd>
+      </li>
+      <li>
+        <dt>Marketing &amp; Merchandising</dt>
+        <dd>{{ market.misc19|safe }}</dd>
+      </li>
     </dl>
   </div>
 
   <div class='grid-row detail-row'>
-    <h3>Logistics &amp; fulfillment</h3>
+    <h3>On Boarding</h3>
     <dl>
       <li>
-        <dt>Logistics support</dt>
-        <dd>{{ market.logistics_structure|safe }}</dd>
+        <dt>Local incorporation</dt>
+        <dd>{{ market.misc20|safe }}</dd>
       </li>
-      <li class='wider'>
-        <dt>Options</dt>
-        <dd>{{ market.logistics_options|safe }}</dd>
+      <li>
+        <dt>Local back account</dt>
+        <dd>{{ market.misc21|safe }}</dd>
+      </li>
+      <li>
+        <dt>Exclusivity</dt>
+        <dd>{{ market.misc22|safe }}</dd>
+      </li>
+      <li>
+        <dt>Logistics structure</dt>
+        <dd>{{ market.get_logistics_structure_display }}</dd>
+      </li>
+      <li>
+        <dt>Transalation</dt>
+        <dd>{{ market.misc23|safe }}</dd>
       </li>
     </dl>
   </div>
 
   <div class='grid-row detail-row'>
-    <h3>Application process and payment terms</h3>
+    <h3>Payment terms</h3>
     <dl>
       <li>
-        <dt>Seller application process</dt>
-        <dd>{{ market.seller_application_process|safe }}</dd>
+        <dt>Payment time</dt>
+        <dd>{{ market.misc24|safe }}</dd>
       </li>
-      <li class='wider'>
-        <dt>Payment terms</dt>
-        <dd>{{ market.payment_terms|safe }}</dd>
+      <li>
+        <dt>Exchange rate</dt>
+        <dd>{{ market.misc25|safe }}</dd>
+      </li>
+      <li>
+        <dt>Lifetime</dt>
+        <dd>{{ market.misc26|safe }}</dd>
       </li>
     </dl>
   </div>
@@ -119,44 +149,24 @@
     <h3>Fees &amp; Pricing structure</h3>
     <dl>
       <li>
-        <dt>Subscription fee</dt>
-        <dd>{{ market.subscription_fees|safe }}</dd>
-        <dt>Additional operating fees</dt>
-        <dd>{{ market.additional_fees|safe }}</dd>
-      </li>
-      <li class='wider'>
         <dt>Registration fee</dt>
         <dd>{{ market.registration_fees|safe }}</dd>
       </li>
-      <li class='ukti-terms'>
-        <dt>UKTI Terms</dt>
-        <dd>{{ market.additional_fees|safe }}</dd>
-      </li>
-      <li>
-        <dt>Referral fees</dt>
+      <li class='wider'>
+        <dt>Commision</dt>
         <dd>{{ market.referral_fees|safe }}</dd>
       </li>
-    </dl>
-  </div>
-
-  <div class='grid-row detail-row'>
-    <h3>Merchandising</h3>
-    <dl>
       <li>
-        <dt>Shopfront customization</dt>
-        <dd>{{ market.customization|safe }}</dd>
+        <dt>Bond required</dt>
+        <dd>{{ market.misc26|safe }}</dd>
       </li>
-      <li>
-        <dt>Shop analytics</dt>
-        <dd>{{ market.shop_analytics|safe }}</dd>
+      <li class='wider'>
+        <dt>Additional fees</dt>
+        <dd>{{ market.additional_fees|safe }}</dd>
       </li>
-      <li>
-        <dt>Social media integration</dt>
-        <dd>{{ market.social_media_integration|safe }}</dd>
-      </li>
-      <li>
-        <dt>Product promotion options</dt>
-        <dd>{{ market.product_promotion_options|safe }}</dd>
+      <li class='ukti-terms'>
+        <dt>UKTI Terms</dt>
+        <dd>{{ market.ukti_terms|safe }}</dd>
       </li>
     </dl>
   </div>

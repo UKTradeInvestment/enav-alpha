@@ -178,40 +178,47 @@ class Market(models.Model):
     platform_type = models.CharField(max_length=255, null=True, blank=True)
 
     # Misc fields
-    misc1 = RichTextField(null=True, blank=True)
-    misc2 = RichTextField(null=True, blank=True)
-    misc3 = RichTextField(null=True, blank=True)
-    misc4 = RichTextField(null=True, blank=True)
-    misc5 = RichTextField(null=True, blank=True)
-    misc6 = RichTextField(null=True, blank=True)
-    misc7 = RichTextField(null=True, blank=True)
-    misc8 = RichTextField(null=True, blank=True)
-    misc9 = RichTextField(null=True, blank=True)
+    misc1 = RichTextField(null=True, blank=True, help_text='')
+    misc2 = RichTextField(null=True, blank=True, help_text='')
+    misc3 = RichTextField(null=True, blank=True, help_text='')
+    misc4 = RichTextField(null=True, blank=True, help_text='')
+    misc5 = RichTextField(null=True, blank=True, help_text='')
+    misc6 = RichTextField(null=True, blank=True, help_text='')
+    misc7 = RichTextField(null=True, blank=True, help_text='')
+    misc8 = RichTextField(null=True, blank=True, help_text='')
+    misc9 = RichTextField(null=True, blank=True, help_text='')
 
-    misc10 = RichTextField(null=True, blank=True)
-    misc11 = RichTextField(null=True, blank=True)
-    misc12 = RichTextField(null=True, blank=True)
-    misc13 = RichTextField(null=True, blank=True)
-    misc14 = RichTextField(null=True, blank=True)
-    misc15 = RichTextField(null=True, blank=True)
-    misc16 = RichTextField(null=True, blank=True)
-    misc17 = RichTextField(null=True, blank=True)
-    misc18 = RichTextField(null=True, blank=True)
-    misc19 = RichTextField(null=True, blank=True)
+    misc10 = RichTextField(null=True, blank=True, help_text='Website traffic - grey box1')
+    misc11 = RichTextField(null=True, blank=True, help_text='Website traffic - grey box2')
+    misc12 = RichTextField(null=True, blank=True, help_text='Website traffic - grey box3')
+    misc13 = RichTextField(null=True, blank=True, help_text='Website traffic - grey box4')
+    misc14 = RichTextField(null=True, blank=True, help_text='Demographic profile')
+    misc15 = RichTextField(null=True, blank=True, help_text='Product upload process')
+    misc16 = RichTextField(null=True, blank=True, help_text='Customer support')
+    misc17 = RichTextField(null=True, blank=True, help_text='Local return address (Yes/No)')
+    misc18 = RichTextField(null=True, blank=True, help_text='Return rates')
+    misc19 = RichTextField(null=True, blank=True, help_text='Marketing and merchandising')
 
-    misc20 = RichTextField(null=True, blank=True)
-    misc21 = RichTextField(null=True, blank=True)
-    misc22 = RichTextField(null=True, blank=True)
-    misc23 = RichTextField(null=True, blank=True)
-    misc24 = RichTextField(null=True, blank=True)
-    misc25 = RichTextField(null=True, blank=True)
-    misc26 = RichTextField(null=True, blank=True)
-    misc27 = RichTextField(null=True, blank=True)
-    misc28 = RichTextField(null=True, blank=True)
-    misc29 = RichTextField(null=True, blank=True)
+    misc20 = RichTextField(null=True, blank=True, help_text='Local incorporation')
+    misc21 = RichTextField(null=True, blank=True, help_text='Local bank account')
+    misc22 = RichTextField(null=True, blank=True, help_text='Exclusivity')
+    misc23 = RichTextField(null=True, blank=True, help_text='Translation')
+    misc24 = RichTextField(null=True, blank=True, help_text='Payment time')
+    misc25 = RichTextField(null=True, blank=True, help_text='Exchange rate')
+    misc26 = RichTextField(null=True, blank=True, help_text='Bond required')
+    misc27 = RichTextField(null=True, blank=True, help_text='')
+    misc28 = RichTextField(null=True, blank=True, help_text='')
+    misc29 = RichTextField(null=True, blank=True, help_text='')
 
     def __str__(self):
         return "{0} {1}".format(self.country, self.name)
 
     class Meta:
         ordering = ('country',)
+
+
+class OldMarket(Market):
+    class Meta:
+        proxy = True
+        verbose_name = "Market - deprecated"
+        verbose_name_plural = "Markets - deprecated"
