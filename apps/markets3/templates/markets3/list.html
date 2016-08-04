@@ -34,6 +34,10 @@
         {% with form.product_categories__name as field %}
           <div class="cf filters-section filters-options" data-field="{{field.name}}">
             {{ field }}
+            <div class="filters-button-group push--top">
+              <button class="button button-grey" type="reset" value="Reset">Cancel</button>
+              <button class="button button-white">Apply Filters</button>
+            </div>
           </div>
         {% endwith %}
       </form>

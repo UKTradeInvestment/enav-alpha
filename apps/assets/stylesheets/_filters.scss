@@ -33,7 +33,15 @@
     display: block;
   }
 
-  .button {
+  &-button-group {
+    text-align: right;
+
+    .button {
+      padding: 10px 30px;
+    }
+  }
+
+  .button-result {
     background-color: $white;
     color: $link-colour;
     font-weight: 900;
@@ -81,7 +89,7 @@
   &-section {
     background-color: $secondary-text-colour;
     color: $white;
-    padding: 10px 0 30px 10px;
+    padding: 10px 10px 30px 10px;
   }
 
   .block-label--top {
