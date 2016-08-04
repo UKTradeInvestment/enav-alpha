@@ -71,4 +71,17 @@
     background-image: none;
   }
 
+  &-border {
+    border: 1px solid $black;
+    background-color: transparent;
+    color: $black;
+
+    &:link,
+    &:visited,
+    &:hover {
+      background-color: transparent;
+      color: $black;
+    }
+  }
+
 }
