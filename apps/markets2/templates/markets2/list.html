@@ -36,8 +36,8 @@
               </dl>
               <dl class='details'>
                 <dt>Platform sales model</dt>
-                <dd>{{market.misc1|safe}}</dd>
-                <dt>Customer service channels</dt>
+                <dd>{% with description=market.misc1|safe %}{{description|default:'&nbsp;'}}{% endwith %}</dd>
+                <dt>Customer service channels</dt><i class="icon icon-information"></i>
                 <dd>{{market.misc2|safe}}</dd>
                 <dt>Local incorporation to join</dt>
                 <dd>{{market.misc3|safe}}</dd>
@@ -73,10 +73,11 @@
             <div class='column-half'>
               <dl class='details'>
                 <dt>Logistics model</dt>
-                <dd>{{market.misc8|safe}}</dd>
-                <dt>Logistic support</dt>
+                <dd>{% with description=market.misc8|safe %}{{description|default:'&nbsp;'}}{% endwith %}</dd>
+                <dt>Logistic support</dt><i class="icon icon-information"></i>
                 <dd>{{market.misc9|safe}}</dd>
               </dl>
+              <a href="">Things you may need to consider</a>
             </div>
           </li>
         {% endfor %}
