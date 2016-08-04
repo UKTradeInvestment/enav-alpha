@@ -1,36 +1,38 @@
-(function ($) {
+var filter = (function ($) {
     var tabItem = $('.filters-tab--item'),
-        filterOptions = $('.filters-options'),
         closeButton = $('.button-close'),
-        applyFilters = $('#apply_filters');
+        filterOptions = $('.filters-options');
 
-    tabItem.click(function (event) {
+    tabItem.click({tabs: tabItem, filters: filterOptions}, toggle);
+    closeButton.click({tabs: tabItem, filters: filterOptions}, closeForm);
+
+    function toggle(event) {
         event.preventDefault();
+        var clickTab = $(this),
+            selector = '.filters-options' + '[data-field="' + $(event.target).data("group") + '"]',
+            selectedGroup = $(selector)[0];
 
-        var clickTab = $(this);
-        filterOptions.hide();
-        var selector = '.filters-options' + '[data-field="' + $(event.target).data("group") + '"]';
-        var selectedGroup = $(selector)[0];
-        
+        $(event.data.filters).hide();
+
         if (clickTab.hasClass('active')) {
-            $(tabItem).removeClass('active');
+            $(event.data.tabs).removeClass('active');
             $(selectedGroup).hide();
         } else {
-            $(tabItem).removeClass('active');
+            $(event.data.tabs).removeClass('active');
             clickTab.addClass('active');
             $(selectedGroup).show();
         }
-    });
-
-    closeButton.click(function (event) {
+    }
+    
+    function closeForm(event) {
         event.preventDefault();
-        $(tabItem).removeClass('active');
-        $(filterOptions ).hide();
-    });
+        $(event.data.tabs).removeClass('active');
+        $(event.data.filters).hide();
+    }
 
-    applyFilters.click(function(event) {
-        var data = $('form').serialize();
-        window.location = '?' + data;
-    });
+    return {
+        toggle: toggle,
+        closeForm: closeForm
+    };
 
 })(jQuery);
