@@ -53,6 +53,10 @@
         &.wider {
             @include grid-column(2/3);
         }
+
+        &.breaker {
+            clear: left;
+        }
     }
 
     dl > hr {

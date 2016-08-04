@@ -49,7 +49,7 @@
     <dl>
       <li>
         <dt>Site traffic</dt>
-        <dd>{{ market.web_traffic_to_site|safe }}</dd>
+        <dd>{{ market.misc10|safe }}</dd>
       </li>
       <li>
         <dt>Platform type</dt>
@@ -78,7 +78,7 @@
         <dd>{{ market.misc15|safe }}</dd>
       </li>
       <hr>
-      <li class='wider'>
+      <li class='wider breaker'>
         <dt>Customer Service &amp; Returns</dt>
         <dd>{{ market.buyers_customer_service|safe }}</dd>
       </li>
@@ -86,7 +86,7 @@
         <dt>Customer Support</dt>
         <dd>{{ market.misc16|safe }}</dd>
       </li>
-      <li>
+      <li class='breaker'>
         <dt>Local return address</dt>
         <dd>{{ market.misc17|safe }}</dd>
       </li>
@@ -116,7 +116,7 @@
         <dt>Exclusivity</dt>
         <dd>{{ market.misc22|safe }}</dd>
       </li>
-      <li>
+      <li class='breaker'>
         <dt>Logistics structure</dt>
         <dd>{{ market.get_logistics_structure_display }}</dd>
       </li>
@@ -156,7 +156,7 @@
         <dt>Commision</dt>
         <dd>{{ market.referral_fees|safe }}</dd>
       </li>
-      <li>
+      <li class='breaker'>
         <dt>Bond required</dt>
         <dd>{{ market.misc26|safe }}</dd>
       </li>
@@ -164,7 +164,7 @@
         <dt>Additional fees</dt>
         <dd>{{ market.additional_fees|safe }}</dd>
       </li>
-      <li class='ukti-terms'>
+      <li class='ukti-terms breaker'>
         <dt>UKTI Terms</dt>
         <dd>{{ market.ukti_terms|safe }}</dd>
       </li>
