@@ -55,4 +55,20 @@
     }
   }
 
+  &-start,
+  &-next {
+    background-image: url('/static/images/icon-pointer.png');
+    background-color: $link-colour;
+
+    &:link,
+    &:visited,
+    &:hover {
+      background-color: $link-colour;
+    }
+  }
+
+  &-next {
+    background-image: none;
+  }
+
 }
