@@ -16,7 +16,7 @@
       <div class="column-two-thirds">
         <div class="list-result">
           {% if markets_list %}
-            <h2 class="heading-large">Online marketplaces</h2>
+            <h2 class="heading-large">E-marketplaces overseas</h2>
             <ul class="">
               {% for market in markets_list %}
                 <li class="push--bottom">
@@ -28,8 +28,7 @@
           <h3 class="list-help heading-medium">AtoZ</h3>
 
           {% elif article %}
-            <h2 class="heading-medium flush--top">Online marketplaces</h2>
-            <h1 class="heading-small push--bottom">{{ article.title }}</h1>
+            <h2 class="heading-large">{{ article.title }}</h2>
             <div class="font-xsmall">{{ article.content|safe }}</div>
           {% endif %}
         </div>
