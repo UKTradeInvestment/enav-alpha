@@ -108,6 +108,18 @@
   &-options {
     display: none;
 
+    ul {
+      float: left;
+      margin-bottom: 30px;
+
+      li {
+        float: left;
+        width: 33.3%;
+      }
+    }
+
+
+
     &.show {
       display: block;
     }
