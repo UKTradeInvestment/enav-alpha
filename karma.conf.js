@@ -13,9 +13,17 @@ module.exports = function (config) {
             /* MOCHA */
             'apps/test/**/*.spec.js',
 
-            'apps/assets/javascripts/**/*.js',
-            'apps/assets/javascripts/filter.js',
+            'apps/assets/javascripts/**/*.js'
         ],
+
+        preprocessors : {
+            'apps/assets/javascripts/**/*.js': 'coverage'
+        },
+
+        coverageReporter: {
+            type : 'html',
+            dir : 'apps/test/coverage/'
+        },
 
         // web server port
         port: 9876,
