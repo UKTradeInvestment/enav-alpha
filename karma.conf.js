@@ -4,14 +4,17 @@ module.exports = function (config) {
 
         basePath: '',
 
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'chai', 'sinon'],
 
         files: [
             'node_modules/jquery/dist/jquery.js',
-            'apps/assets/javascripts/**/*.js',
+
 
             /* MOCHA */
-            'apps/test/**/*.spec.js'
+            'apps/test/**/*.spec.js',
+
+            'apps/assets/javascripts/**/*.js',
+            'apps/assets/javascripts/filter.js',
         ],
 
         // web server port
