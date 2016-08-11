@@ -1,8 +1,10 @@
-(function () {
-  function update_count() {
+var resultCount = (function ($) {
+
+    function update_count() {
       var $form = $('#results-form'),
           action = $form.data('count-action'),
           $count = $('#results-count > h5');
+
       $.ajax({
           url: action,
           type: 'GET',
@@ -11,7 +13,7 @@
                 $count.text(result.count);
           }
       });
-  }
+    }
 
     $('#results-count').each(function(){
         var $form = $('#results-form');
@@ -19,4 +21,9 @@
     });
 
     $(document).ready(update_count);
-})();
+
+    return {
+        update_count: update_count
+    };
+
+})(jQuery);

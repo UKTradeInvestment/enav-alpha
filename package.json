@@ -6,7 +6,7 @@
     "node": "5.0.0"
   },
   "scripts": {
-    "test": "gulp lint && ./node_modules/karma/bin/karma start --single-run",
+    "test": "gulp lint && ./node_modules/karma/bin/karma start --reporters coverage --single-run && ./node_modules/karma/bin/karma start --single-run",
     "build": "gulp",
     "watch": "gulp watch"
   },
