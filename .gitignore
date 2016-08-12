@@ -103,4 +103,4 @@ node_modules/
 *.DS_Store
 
 # Js test coverage
-apps/test/coverage/
+apps/test/unit/coverage/

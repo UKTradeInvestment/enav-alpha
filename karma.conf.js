@@ -11,7 +11,7 @@ module.exports = function (config) {
 
 
             /* MOCHA */
-            'apps/test/**/*.spec.js',
+            'apps/test/unit/**/*.spec.js',
 
             'apps/assets/javascripts/**/*.js'
         ],
@@ -22,7 +22,7 @@ module.exports = function (config) {
 
         coverageReporter: {
             type : 'html',
-            dir : 'apps/test/coverage/'
+            dir : 'apps/test/unit/coverage/'
         },
 
         // web server port
@@ -45,7 +45,7 @@ module.exports = function (config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
+        singleRun: true
 
     });
 };

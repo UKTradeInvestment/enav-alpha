@@ -6,7 +6,7 @@
     "node": "5.0.0"
   },
   "scripts": {
-    "test": "gulp lint && ./node_modules/karma/bin/karma start --reporters coverage --single-run && ./node_modules/karma/bin/karma start --single-run",
+    "test": "gulp test",
     "build": "gulp",
     "watch": "gulp watch"
   },
@@ -40,6 +40,7 @@
     "chai": "^3.5.0",
     "gulp-css-url-adjuster": "0.2.3",
     "gulp-jshint": "2.0.0",
+    "gulp-protractor": "^3.0.0",
     "gulp-sass-lint": "1.1.1",
     "jshint": "2.9.1",
     "jshint-stylish": "2.1.0",
@@ -52,7 +53,8 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.3",
     "mocha": "^1.20.1",
-    "phantomjs": "^1.9.7-14",
+    "protractor": "^4.0.3",
+    "selenium-standalone-jar": "2.45.0",
     "sinon": "^1.10.3",
     "sinon-chai": "^2.5.0"
   }

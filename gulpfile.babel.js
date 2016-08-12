@@ -11,8 +11,13 @@ import paths from './projectpath.babel';
 import loadPlugins from 'gulp-load-plugins';
 import karma from 'karma';
 
-const plugins = loadPlugins();
+const plugins = loadPlugins(),
+      protractor = plugins.protractor.protractor,
+      webdriver_standalone = plugins.protractor.webdriver_standalone,
+      webdriver_update = plugins.protractor.webdriver_update;
 
+gulp.task('webdriver_update', webdriver_update);
+gulp.task('webdriver_standalone', webdriver_standalone);
 
 // TASKS
 // - - - - - - - - - - - - - - -
@@ -97,7 +102,7 @@ gulp.task('images', () => gulp
 
 // Watch for changes and re-run tasks
 gulp.task('watchForChanges', function() {
-  gulp.watch(paths.src + 'javascripts/**/*', ['javascripts']);
+  gulp.watch(paths.src + 'javascripts/**/*', ['javascripts', 'watch-unit-tests']);
   gulp.watch(paths.src + 'stylesheets/**/*.scss', ['sass']);
   gulp.watch(paths.src + 'images/**/*', ['images']);
   gulp.watch('gulpfile.babel.js', ['default']);
@@ -125,16 +130,37 @@ gulp.task('lint',
   ['lint:sass', 'lint:js']
 );
 
-gulp.task('js:tests', () => {
+gulp.task('protractor:e2e', ['webdriver_update'], (callback) => gulp
+    .src(['example_spec.js'])
+    .pipe(protractor({
+        'configFile': './apps/test/e2e/conf.js',
+        'debug': false,
+        'autoStartStopServer': true
+    })).on('error', function(e) {
+        console.log(e);
+    }).on('end', function (callback) {
+        callback;
+    })
+);
+
+
+gulp.task('unit-tests', () => {
     karma.server.start({
         configFile: __dirname + '/karma.conf.js',
+        reporters: ['progress', 'coverage']
+    })
+});
+
+gulp.task('watch-unit-tests', () => {
+    karma.server.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: false
     })
 });
 
 // Default: compile everything
 gulp.task('default',
   [
-    // 'copy:govuk_template:template',
     'copy:govuk_template:images',
     'copy:govuk_template:css',
     'copy:govuk_template:js',
@@ -147,4 +173,11 @@ gulp.task('default',
 // Optional: recompile on changes
 gulp.task('watch',
     ['default', 'watchForChanges']
+);
+
+gulp.task('test',
+    [
+     'lint',
+     'unit-tests'
+    ]
 );
