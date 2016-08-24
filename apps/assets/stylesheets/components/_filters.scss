@@ -2,8 +2,8 @@
   padding: 15px;
 
   &-header {
-    font-weight: 900;
     font-size: 18px;
+    font-weight: 900;
   }
 
   .block-label {
@@ -11,9 +11,9 @@
   }
 
   .form-control {
-    width: 100%;
-    height: 40px;
     border: 1px solid $secondary-text-colour;
+    height: 40px;
+    width: 100%;
   }
 
   h4 {
@@ -25,8 +25,8 @@
   }
 
   &-result {
-    text-align: center;
     color: $white;
+    text-align: center;
   }
 
   li {
@@ -43,9 +43,9 @@
 
   .button-result {
     background-color: $white;
+    box-shadow: none;
     color: $link-colour;
     font-weight: 900;
-    box-shadow: none;
     padding: 15px 70px;
   }
 
@@ -58,13 +58,9 @@
   }
 
   .icon {
-    position: absolute;
     bottom: 15px;
     left: 20px;
-  }
-
-  &-list {
-
+    position: absolute;
   }
 
   &-tab--item {
@@ -78,7 +74,9 @@
       text-decoration: none;
     }
 
-    &.active, &:hover, &:focus  {
+    &.active,
+    &:hover,
+    &:focus  {
       background-color: $secondary-text-colour;
       color: $white;
       outline: 0;
@@ -89,7 +87,7 @@
   &-section {
     background-color: $secondary-text-colour;
     color: $white;
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 30px;
   }
 
   .block-label--top {
@@ -104,7 +102,7 @@
 
   }
 
-  
+
   &-options {
     display: none;
 

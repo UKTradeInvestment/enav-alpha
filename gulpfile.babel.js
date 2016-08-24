@@ -114,7 +114,14 @@ gulp.task('lint:sass', () => gulp
     paths.src + 'stylesheets/components/*.scss',
     paths.src + 'stylesheets/views/*.scss',
   ])
-    .pipe(plugins.sassLint())
+    .pipe(plugins.sassLint({
+        rules: {
+            'no-mergeable-selectors': 1, // Severity 1 (warning)
+            'pseudo-element': 0,
+            'no-ids': 0,
+            'mixins-before-declarations': 0
+        }
+    }))
     .pipe(plugins.sassLint.format(stylish))
     .pipe(plugins.sassLint.failOnError())
 );
