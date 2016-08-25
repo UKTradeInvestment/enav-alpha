@@ -1,88 +1,26 @@
-.button {
-  box-shadow: none;
-  font-weight: 900;
+@each $name, $bg-color, $hover, $visited, $color, $color-hover, $bg-image, $outline in $button {
+  .button {
+    box-shadow: none;
+    font-weight: 900;
 
-  &-blue {
-    background-color: $link-colour;
-    border: 1px solid $link-colour;
+    &-#{$name} {
+      background-color: $bg-color;
+      @if $bg-image != null {
+        background-image: url($bg-image);
+      }
+      color: $color;
+      outline: $outline;
 
-    &:visited {
-      background-color: $link-colour;
-    }
+      &:link,
+      &:visited {
+        background-color: $visited;
+        color: $color-hover;
+      }
 
-    &:hover {
-      background-color: $link-hover-colour;
-    }
-  }
-
-  &-transparent {
-    border: 1px solid $link-colour;
-
-    &:link,
-    &:visited {
-      background-color: transparent;
-      color: $link-colour;
-    }
-
-    &:hover {
-      background-color: transparent;
-      color: $link-hover-colour;
+      &:hover {
+        background-color: $hover;
+        color: $color-hover;
+      }
     }
   }
-
-  &-white {
-    background-color: $white;
-    border: 1px solid $white;
-    color: $link-colour;
-
-    &:link,
-    &:visited,
-    &:hover {
-      background-color: $white;
-      color: $link-colour;
-    }
-  }
-
-  &-grey {
-    background-color: $grey-3;
-    border: 1px solid $grey-3;
-    color: $link-colour;
-
-    &:link,
-    &:visited,
-    &:hover {
-      background-color: $white;
-      color: $link-colour;
-    }
-  }
-
-  &-start,
-  &-next {
-    background-color: $link-colour;
-    background-image: url('/static/images/icon-pointer.png');
-
-    &:link,
-    &:visited,
-    &:hover {
-      background-color: $link-colour;
-    }
-  }
-
-  &-next {
-    background-image: none;
-  }
-
-  &-border {
-    background-color: transparent;
-    border: 1px solid $black;
-    color: $black;
-
-    &:link,
-    &:visited,
-    &:hover {
-      background-color: transparent;
-      color: $black;
-    }
-  }
-
 }
