@@ -3,6 +3,15 @@
 $base-spacing-unit: 20px;
 $half-spacing-unit: $base-spacing-unit/2;
 
+
+/**
+ * Text alignment
+ */
+.text--left     { text-align:left; }
+.text--center   { text-align:center; }
+.text--right    { text-align:right; }
+
+
 /**
  * Add/remove margins
  */
